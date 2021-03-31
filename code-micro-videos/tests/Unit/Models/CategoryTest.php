@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Unit\Models;
 
 use App\Models\Category;
 use App\Models\Traits\Uuid;
@@ -10,18 +10,22 @@ use PHPUnit\Framework\TestCase;
 class CategoryTest extends TestCase
 {
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->category = new Category();
+    }
+
     public function testFillableAttribute()
     {
         $fillable = ['name', 'description', 'is_active'];
-        $category = new Category();
-        $this->assertEquals($fillable, $category->getFillable());
+        $this->assertEquals($fillable, $this->category->getFillable());
     }
 
     public function testDatesAttribute()
     {
         $dates = ['deleted_at', 'created_at', 'updated_at'];
-        $category = new Category();
-        $categoryDates = $category->getDates();
+        $categoryDates = $this->category->getDates();
         foreach ($dates as $date) {
             $this->assertContains($date, $categoryDates);
         }
@@ -38,13 +42,11 @@ class CategoryTest extends TestCase
 
     public function testKeyTypeAttribute()
     {
-        $category = new Category();
-        $this->assertEquals('string', $category->getKeyType());
+        $this->assertEquals('string', $this->category->getKeyType());
     }
 
     public function testIncrementing()
     {
-        $category = new Category();
-        $this->assertFalse($category->getIncrementing());
+        $this->assertFalse($this->category->getIncrementing());
     }
 }

@@ -19,3 +19,6 @@ run-unit-tests:
 
 create-category-test:
 	php artisan make:test CategoryTest --unit;
+
+create-category-test-feat:
+	php artisan make:test Models/CategoryTest;
