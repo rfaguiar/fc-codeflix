@@ -17,8 +17,8 @@ run-migrate-seed:
 run-unit-tests:
 	 vendor/bin/phpunit;
 
-create-category-test:
+create-category-test-unit:
 	php artisan make:test CategoryTest --unit;
 
-create-category-test-feat:
+create-category-test:
 	php artisan make:test Models/CategoryTest;
