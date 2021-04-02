@@ -4,6 +4,7 @@ namespace Tests\Feature\Models;
 
 use App\Models\Category;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Ramsey\Uuid\Uuid;
 use Tests\TestCase;
 
 class CategoryTest extends TestCase
@@ -24,8 +25,11 @@ class CategoryTest extends TestCase
 
     public function testCreate()
     {
+        /** @var Category $category */
         $category = Category::create(['name' => 'test1']);
         $category->refresh();
+
+        $this->assertTrue(Uuid::isValid($category->id));
         $this->assertEquals('test1', $category->name);
         $this->assertNull($category->description);
         $this->assertTrue((bool)$category->is_active);
@@ -76,5 +80,16 @@ class CategoryTest extends TestCase
             $this->assertEquals($value, $category->{$key});
         }
 
+    }
+
+    public function testDelete() {
+
+        /** @var Category $category */
+        $category = factory(Category::class)->create()->first();
+
+        $category->delete();
+
+        $this->assertNull(Category::find($category->id));
+        $this->assertNotNull(Category::withTrashed($category->id));
     }
 }

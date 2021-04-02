@@ -4,6 +4,7 @@ namespace Tests\Feature\Models;
 
 use App\Models\Genre;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Ramsey\Uuid\Uuid;
 use Tests\TestCase;
 
 class GenreTest extends TestCase
@@ -26,6 +27,8 @@ class GenreTest extends TestCase
     {
         $genre = Genre::create(['name' => 'test1']);
         $genre->refresh();
+
+        $this->assertTrue(Uuid::isValid($genre->id));
         $this->assertEquals('test1', $genre->name);
         $this->assertTrue((bool)$genre->is_active);
 
@@ -60,5 +63,16 @@ class GenreTest extends TestCase
             $this->assertEquals($value, $genre->{$key});
         }
 
+    }
+
+    public function testDelete() {
+
+        /** @var Genre $genre */
+        $genre = factory(Genre::class)->create()->first();
+
+        $genre->delete();
+
+        $this->assertNull(Genre::find($genre->id));
+        $this->assertNotNull(Genre::withTrashed($genre->id));
     }
 }
