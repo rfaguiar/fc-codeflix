@@ -29,6 +29,7 @@ class CategoryTest extends TestCase
         $category = Category::create(['name' => 'test1']);
         $category->refresh();
 
+        $this->assertEquals(36, strlen($category->id));
         $this->assertTrue(Uuid::isValid($category->id));
         $this->assertEquals('test1', $category->name);
         $this->assertNull($category->description);
@@ -68,7 +69,7 @@ class CategoryTest extends TestCase
         $category = factory(Category::class)->create([
             'description' => 'test_description',
             'is_active' => false
-        ])->first();
+        ]);
         $data = [
             'name' => 'test_name_updated',
             'description' => 'test_description_updated',
@@ -85,11 +86,14 @@ class CategoryTest extends TestCase
     public function testDelete() {
 
         /** @var Category $category */
-        $category = factory(Category::class)->create()->first();
+        $category = factory(Category::class)->create();
 
         $category->delete();
 
         $this->assertNull(Category::find($category->id));
         $this->assertNotNull(Category::withTrashed($category->id));
+
+        $category->restore();
+        $this->assertNotNull(Category::find($category->id));
     }
 }

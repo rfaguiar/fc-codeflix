@@ -28,6 +28,7 @@ class GenreTest extends TestCase
         $genre = Genre::create(['name' => 'test1']);
         $genre->refresh();
 
+        $this->assertEquals(36, strlen($genre->id));
         $this->assertTrue(Uuid::isValid($genre->id));
         $this->assertEquals('test1', $genre->name);
         $this->assertTrue((bool)$genre->is_active);
@@ -52,7 +53,7 @@ class GenreTest extends TestCase
         /** @var Genre $genre */
         $genre = factory(Genre::class)->create([
             'is_active' => false
-        ])->first();
+        ]);
         $data = [
             'name' => 'test_name_updated',
             'is_active' => true
@@ -68,11 +69,14 @@ class GenreTest extends TestCase
     public function testDelete() {
 
         /** @var Genre $genre */
-        $genre = factory(Genre::class)->create()->first();
+        $genre = factory(Genre::class)->create();
 
         $genre->delete();
 
         $this->assertNull(Genre::find($genre->id));
         $this->assertNotNull(Genre::withTrashed($genre->id));
+
+        $genre->restore();
+        $this->assertNotNull(Genre::find($genre->id));
     }
 }
