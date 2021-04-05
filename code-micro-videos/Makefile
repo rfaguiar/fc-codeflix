@@ -24,4 +24,4 @@ create-category-test:
 	php artisan make:test Models/CategoryTest;
 
 create-category-controller-test:
-	php artisan make:test Http/Controllers/Api/CategoryController;
+	php artisan make:test Http/Controllers/Api/CategoryControllerTest;
