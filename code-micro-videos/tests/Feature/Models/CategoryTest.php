@@ -75,7 +75,7 @@ class CategoryTest extends TestCase
             'description' => 'test_description_updated',
             'is_active' => true
         ];
-        $category = Category::create($data);
+        $category->update($data);
 
         foreach ($data as $key => $value) {
             $this->assertEquals($value, $category->{$key});

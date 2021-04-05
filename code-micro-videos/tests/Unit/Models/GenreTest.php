@@ -27,6 +27,12 @@ class GenreTest extends TestCase
         $this->assertEquals($fillable, $this->genre->getFillable());
     }
 
+    public function testCasts()
+    {
+        $casts = ['id' => 'string', 'is_active' => 'boolean'];
+        $this->assertEquals($casts, $this->genre->getCasts());
+    }
+
     public function testDatesAttribute()
     {
         $dates = ['deleted_at', 'created_at', 'updated_at'];

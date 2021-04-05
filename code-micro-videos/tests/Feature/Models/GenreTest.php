@@ -31,19 +31,19 @@ class GenreTest extends TestCase
         $this->assertEquals(36, strlen($genre->id));
         $this->assertTrue(Uuid::isValid($genre->id));
         $this->assertEquals('test1', $genre->name);
-        $this->assertTrue((bool)$genre->is_active);
+        $this->assertTrue($genre->is_active);
 
         $genre = Genre::create([
             'name' => 'test1',
             'is_active' => false
         ]);
-        $this->assertFalse((bool)$genre->is_active);
+        $this->assertFalse($genre->is_active);
 
         $genre = Genre::create([
             'name' => 'test1',
             'is_active' => true
         ]);
-        $this->assertTrue((bool)$genre->is_active);
+        $this->assertTrue($genre->is_active);
 
     }
 
@@ -58,7 +58,7 @@ class GenreTest extends TestCase
             'name' => 'test_name_updated',
             'is_active' => true
         ];
-        $genre = Genre::create($data);
+        $genre->update($data);
 
         foreach ($data as $key => $value) {
             $this->assertEquals($value, $genre->{$key});
