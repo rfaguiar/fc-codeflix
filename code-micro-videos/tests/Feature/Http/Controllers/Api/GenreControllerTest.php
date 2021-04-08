@@ -6,11 +6,12 @@ use App\Models\Genre;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\TestResponse;
 use Tests\TestCase;
+use Tests\Traits\TestSaves;
 use Tests\Traits\TestValidations;
 
 class GenreControllerTest extends TestCase
 {
-    use DatabaseMigrations, TestValidations;
+    use DatabaseMigrations, TestValidations, TestSaves;
 
 
     private $genre;
@@ -96,31 +97,20 @@ class GenreControllerTest extends TestCase
 
     public function testStore()
     {
-        $response = $this->json('POST', route('genres.store'), [
+
+        $data = [
             'name'=>'test'
+        ];
+        $response = $this->assertStore($data, $data + ['is_active' => true, 'deleted_at' => null]);
+        $response->assertJsonStructure([
+            'created_at', 'updated_at'
         ]);
 
-        /** @var Genre $genre */
-        $genre = Genre::find($response->json('id'));
-
-        $response->assertStatus(201)
-            ->assertJson($genre->toArray());
-
-        $this->assertTrue($response->json('is_active'));
-
-        $response = $this->json('POST', route('genres.store'), [
+        $data = [
             'name'=>'test',
-            'is_active'=>false
-        ]);
-
-        /** @var Genre $genre */
-        $genre = Genre::find($response->json('id'));
-
-        $response->assertStatus(201)
-            ->assertJson($genre->toArray())
-            ->assertJsonFragment([
-                'is_active'=>false,
-            ]);
+            'is_active' => false
+        ];
+        $this->assertStore($data, $data);
     }
 
     public function testUpdate()
@@ -164,5 +154,10 @@ class GenreControllerTest extends TestCase
     protected function routeUpdate()
     {
         return route('genres.update', ['genre' => $this->genre->id]);
+    }
+
+    protected function model()
+    {
+        return Genre::class;
     }
 }
