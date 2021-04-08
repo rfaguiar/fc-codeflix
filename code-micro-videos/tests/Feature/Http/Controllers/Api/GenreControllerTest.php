@@ -149,8 +149,7 @@ class GenreControllerTest extends TestCase
 
         $response->assertNoContent();
 
-        /** @var Genre $genre */
-        $genre = Genre::find($genre->id);
-        $this->assertNull($genre);
+        $this->assertNull(Genre::find($genre->id));
+        $this->assertNotNull(Genre::withTrashed()->find($genre->id));
     }
 }

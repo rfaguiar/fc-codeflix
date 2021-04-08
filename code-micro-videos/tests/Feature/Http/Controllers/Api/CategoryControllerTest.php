@@ -179,8 +179,7 @@ class CategoryControllerTest extends TestCase
 
         $response->assertNoContent();
 
-        /** @var Category $category */
-        $category = Category::find($category->id);
-        $this->assertNull($category);
+        $this->assertNull(Category::find($category->id));
+        $this->assertNotNull(Category::withTrashed()->find($category->id));
     }
 }
