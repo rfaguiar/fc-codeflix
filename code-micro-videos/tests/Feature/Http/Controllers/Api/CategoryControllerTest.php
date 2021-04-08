@@ -83,50 +83,39 @@ class CategoryControllerTest extends TestCase
     public function testUpdate()
     {
         /** @var Category $category */
-        $category = factory(Category::class)->create([
+        $this->category = factory(Category::class)->create([
             'description'=>'description',
             'is_active'=>false
         ]);
 
-        $response = $this->json('PUT', route('categories.update', ['category'=>$category->id]), [
+        $data = [
             'name'=>'test',
-            'description'=>'test',
-            'is_active'=>true
+            'description' => 'description',
+            'is_active' => true
+        ];
+        $response = $this->assertUpdate($data, $data + ['deleted_at' => null]);
+        $response->assertJsonStructure([
+            'created_at', 'updated_at'
         ]);
 
-        /** @var Category $category */
-        $category = Category::find($response->json('id'));
-
-        $response->assertStatus(200)
-            ->assertJson($category->toArray())
-            ->assertJsonFragment([
-                'description'=>'test',
-                'is_active'=>true
-            ]);
-
-        $response = $this->json('PUT', route('categories.update', ['category'=>$category->id]), [
+        $data = [
             'name'=>'test',
-            'description'=>''
-        ]);
+            'description' => ''
+        ];
+        $this->assertUpdate($data, array_merge($data, ['description' => null]));
 
-        $response->assertStatus(200)
-            ->assertJsonFragment([
-                'description'=>null
-            ]);
-
-        $category->description = 'test';
-        $category->save();
-
-
-        $response = $this->json('PUT', route('categories.update', ['category'=>$category->id]), [
+        $data = [
             'name'=>'test',
-            'description'=>null
-        ]);
+            'description' => 'test'
+        ];
+        $this->assertUpdate($data, array_merge($data, ['description' => 'test']));
 
-        $response->assertStatus(200)
-            ->assertJsonFragment([
-                'description'=>null
-            ]);
+
+        $data = [
+            'name'=>'test',
+            'description' => null
+        ];
+        $this->assertUpdate($data, array_merge($data, ['description' => null]));
     }
 
 
