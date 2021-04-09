@@ -3,19 +3,22 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 abstract class BasicCrudController extends Controller
 {
-    private $rules = [
-        'name' => 'required|max:255',
-        'is_active' => 'boolean',
-    ];
-
     protected abstract function model();
+
+    protected abstract function ruleStore();
 
     public function index()
     {
         return $this->model()::all();
+    }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, $this->ruleStore());
     }
 
 //    public function store(Request $request)
