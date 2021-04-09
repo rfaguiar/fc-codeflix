@@ -97,7 +97,6 @@ class GenreControllerTest extends TestCase
 
     public function testStore()
     {
-
         $data = [
             'name'=>'test'
         ];
@@ -110,7 +109,7 @@ class GenreControllerTest extends TestCase
             'name'=>'test',
             'is_active' => false
         ];
-        $this->assertStore($data, $data);
+        $this->assertStore($data, $data + ['is_active' => false]);
     }
 
     public function testUpdate()
