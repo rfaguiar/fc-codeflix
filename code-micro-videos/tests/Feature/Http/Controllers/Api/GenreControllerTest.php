@@ -61,6 +61,7 @@ class GenreControllerTest extends TestCase
             'is_active' => 'a'
         ];
         $this->assertInvalidationInStoreAction($data, 'boolean');
+        // TODO: Implement rulesUpdate() method.
         $this->assertInvalidationInUpdateAction($data, 'boolean');
     }
 
@@ -114,11 +115,6 @@ class GenreControllerTest extends TestCase
 
     public function testUpdate()
     {
-        /** @var Genre $genre */
-        $this->genre = factory(Genre::class)->create([
-            'is_active'=>false
-        ]);
-
         $data = [
             'name'=>'test',
             'is_active' => true
