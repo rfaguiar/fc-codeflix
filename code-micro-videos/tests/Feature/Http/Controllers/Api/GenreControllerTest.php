@@ -61,7 +61,6 @@ class GenreControllerTest extends TestCase
             'is_active' => 'a'
         ];
         $this->assertInvalidationInStoreAction($data, 'boolean');
-        // TODO: Implement rulesUpdate() method.
         $this->assertInvalidationInUpdateAction($data, 'boolean');
     }
 
