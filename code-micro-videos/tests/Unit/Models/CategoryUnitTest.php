@@ -2,62 +2,62 @@
 
 namespace Tests\Unit\Models;
 
-use App\Models\Genre;
+use App\Models\Category;
 use App\Models\Traits\Uuid;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use PHPUnit\Framework\TestCase;
 
-class GenreTest extends TestCase
+class CategoryUnitTest extends TestCase
 {
 
     /**
-     * @var Genre
+     * @var Category
      */
-    private $genre;
+    private $category;
 
     protected function setUp(): void
     {
         parent::setUp();
-        $this->genre = new Genre();
+        $this->category = new Category();
     }
 
     public function testFillableAttribute()
     {
-        $fillable = ['name', 'is_active'];
-        $this->assertEquals($fillable, $this->genre->getFillable());
+        $fillable = ['name', 'description', 'is_active'];
+        $this->assertEquals($fillable, $this->category->getFillable());
     }
 
     public function testCasts()
     {
         $casts = ['id' => 'string', 'is_active' => 'boolean'];
-        $this->assertEquals($casts, $this->genre->getCasts());
+        $this->assertEquals($casts, $this->category->getCasts());
     }
 
     public function testDatesAttribute()
     {
         $dates = ['deleted_at', 'created_at', 'updated_at'];
-        $genreDates = $this->genre->getDates();
+        $categoryDates = $this->category->getDates();
         foreach ($dates as $date) {
-            $this->assertContains($date, $genreDates);
+            $this->assertContains($date, $categoryDates);
         }
-        $this->assertCount(count($dates), $genreDates);
+        $this->assertCount(count($dates), $categoryDates);
     }
 
     public function testIfUseTraits()
     {
         $traits = [SoftDeletes::class, Uuid::class];
-        $genreTraits = array_keys(class_uses(Genre::class));
-        $this->assertEquals($traits, $genreTraits);
+        $categoryTraits = array_keys(class_uses(Category::class));
+        $this->assertEquals($traits, $categoryTraits);
     }
 
 
     public function testKeyTypeAttribute()
     {
-        $this->assertEquals('string', $this->genre->getKeyType());
+        $this->assertEquals('string', $this->category->getKeyType());
     }
 
     public function testIncrementing()
     {
-        $this->assertFalse($this->genre->getIncrementing());
+        $this->assertFalse($this->category->getIncrementing());
     }
 }
