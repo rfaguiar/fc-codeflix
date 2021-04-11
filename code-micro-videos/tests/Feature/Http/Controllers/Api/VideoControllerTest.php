@@ -2,11 +2,13 @@
 
 namespace Tests\Feature\Http\Controllers\Api;
 
+use App\Http\Controllers\Api\VideoController;
 use App\Models\Category;
 use App\Models\Genre;
 use App\Models\Video;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\TestResponse;
+use Illuminate\Http\Request;
+use Tests\Exceptions\TestException;
 use Tests\TestCase;
 use Tests\Traits\TestSaves;
 use Tests\Traits\TestValidations;
@@ -23,7 +25,9 @@ class VideoControllerTest extends TestCase
         parent::setUp();
 
         /** @var Video $video */
-        $this->video = factory(Video::class)->create();
+        $this->video = factory(Video::class)->create([
+            'opened'=>false
+        ]);
         $this->sendData = [
             'title'=>'title',
             'description'=>'description',
@@ -205,6 +209,33 @@ class VideoControllerTest extends TestCase
 
         $this->assertNull(Video::find($this->video->id));
         $this->assertNotNull(Video::withTrashed()->find($this->video->id));
+    }
+
+    public function testRollbackStore()
+    {
+        $request = \Mockery::mock(Request::class);
+
+        $controller = \Mockery::mock(VideoController::class)
+            ->makePartial()
+            ->shouldAllowMockingProtectedMethods();
+
+        $controller->shouldReceive('validate')
+            ->withAnyArgs()
+            ->andReturn($this->sendData);
+
+        $controller->shouldReceive('rulesStore')
+            ->withAnyArgs()
+            ->andReturn([]);
+
+        $controller->shouldReceive('handleRelations')
+            ->once()
+            ->andThrow(new TestException());
+
+        try {
+            $controller->store($request);
+        } catch (TestException $exception) {
+            $this->assertCount(1, Video::all());
+        }
     }
 
     protected function routeStore()
