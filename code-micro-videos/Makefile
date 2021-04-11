@@ -25,3 +25,9 @@ create-category-test:
 
 create-category-controller-test:
 	php artisan make:test Http/Controllers/Api/CategoryControllerTest;
+
+create-category-video-table:
+	php artisan make:migration create_category_video_table;
+
+create-genre-video-table:
+	php artisan make:migration create_genre_video_table;
