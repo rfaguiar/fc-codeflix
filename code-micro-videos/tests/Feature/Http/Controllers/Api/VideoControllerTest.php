@@ -2,6 +2,8 @@
 
 namespace Tests\Feature\Http\Controllers\Api;
 
+use App\Models\Category;
+use App\Models\Genre;
 use App\Models\Video;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\TestResponse;
@@ -57,7 +59,9 @@ class VideoControllerTest extends TestCase
             'description'=>'',
             'year_launched'=>'',
             'rating'=>'',
-            'duration'=>''
+            'duration'=>'',
+            'categories_id'=>'',
+            'genres_id'=>''
         ];
         $this->assertInvalidationInStoreAction($data, 'required');
         $this->assertInvalidationInUpdateAction($data, 'required');
@@ -108,21 +112,89 @@ class VideoControllerTest extends TestCase
         $this->assertInvalidationInUpdateAction($data, 'in');
     }
 
-
-    public function testStore()
+    public function testInvalidationCategoriesIdField()
     {
-        $response = $this->assertStore($this->sendData, $this->sendData + ['opened'=>false]);
-        $response->assertJsonStructure([
-            'created_at', 'updated_at'
-        ]);
+        $data = [
+            'categories_id'=>'a'
+        ];
+        $this->assertInvalidationInStoreAction($data, 'array');
+        $this->assertInvalidationInUpdateAction($data, 'array');
 
-        $this->assertStore(
-            $this->sendData + ['opened'=>true],
-            $this->sendData + ['opened'=>true]);
+        $data = [
+            'categories_id'=>[100]
+        ];
+        $this->assertInvalidationInStoreAction($data, 'exists');
+        $this->assertInvalidationInUpdateAction($data, 'exists');
+    }
 
-        $this->assertStore(
-            $this->sendData + ['rating'=>Video::RATING_LIST[1]],
-            $this->sendData + ['rating'=>Video::RATING_LIST[1]]);
+    public function testInvalidationGenresIdField()
+    {
+        $data = [
+            'genres_id'=>'a'
+        ];
+        $this->assertInvalidationInStoreAction($data, 'array');
+        $this->assertInvalidationInUpdateAction($data, 'array');
+
+        $data = [
+            'genres_id'=>[100]
+        ];
+        $this->assertInvalidationInStoreAction($data, 'exists');
+        $this->assertInvalidationInUpdateAction($data, 'exists');
+    }
+
+
+    public function testSave()
+    {
+        /** @var Category $category */
+        $category = factory(Category::class)->create();
+        /** @var Genre $genre */
+        $genre = factory(Genre::class)->create();
+
+        $data = [
+            [
+                'send_data' => $this->sendData + [
+                        'categories_id' => [$category->id],
+                        'genres_id' => [$genre->id]
+                    ],
+                'test_data' => $this->sendData + ['opened' => false]
+            ],
+            [
+                'send_data' => $this->sendData + [
+                        'categories_id' => [$category->id],
+                        'genres_id' => [$genre->id],
+                        'opened' => true
+                    ],
+                'test_data' => $this->sendData + ['opened' => true]
+            ],
+            [
+                'send_data' => $this->sendData + [
+                        'categories_id' => [$category->id],
+                        'genres_id' => [$genre->id],
+                        'rating' => Video::RATING_LIST[1]
+                    ],
+                'test_data' => $this->sendData + ['rating' => Video::RATING_LIST[1]]
+            ]
+        ];
+
+        foreach ($data as $key => $value)
+        {
+            $response = $this->assertStore(
+                $value['send_data'],
+                $value['test_data'] + ['deleted_at' => null]
+            );
+            $response->assertJsonStructure([
+                'created_at',
+                'updated_at'
+            ]);
+            $response = $this->assertUpdate(
+                $value['send_data'],
+                $value['test_data'] + ['deleted_at' => null]
+            );
+            $response->assertJsonStructure([
+                'created_at',
+                'updated_at'
+            ]);
+        }
     }
 
     public function testDestroy()
