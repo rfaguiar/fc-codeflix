@@ -34,3 +34,6 @@ create-genre-video-table:
 
 create-category-genre-table:
 	php artisan make:migration create_category_genre_table;
+
+create-rule-genres-categories:
+	php artisan make:rule GenresHasCategoriesRule;
