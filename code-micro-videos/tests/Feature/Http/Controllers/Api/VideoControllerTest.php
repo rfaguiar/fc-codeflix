@@ -250,6 +250,10 @@ class VideoControllerTest extends TestCase
     {
         $request = \Mockery::mock(Request::class);
 
+        $request->shouldReceive('get')
+            ->withAnyArgs()
+            ->andReturnNull();
+
         $controller = \Mockery::mock(VideoController::class)
             ->makePartial()
             ->shouldAllowMockingProtectedMethods();
@@ -280,6 +284,10 @@ class VideoControllerTest extends TestCase
     public function testRollbackUpdate()
     {
         $request = \Mockery::mock(Request::class);
+
+        $request->shouldReceive('get')
+            ->withAnyArgs()
+            ->andReturnNull();
 
         $controller = \Mockery::mock(VideoController::class)
             ->makePartial()
