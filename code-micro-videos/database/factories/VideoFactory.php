@@ -11,7 +11,6 @@ $factory->define(Video::class, function (Faker $faker) {
         'title'=>$faker->sentence(3),
         'description'=>$faker->sentence(10),
         'year_launched'=>rand(1895, 2022),
-        'opened'=>rand(0, 1),
         'rating'=>$rating,
         'duration'=>rand(1, 30)
     ];
