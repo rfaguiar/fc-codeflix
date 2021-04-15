@@ -97,6 +97,5 @@ class UploadFilesUnitTest extends TestCase
         $this->assertCount(3, $attributes);
         $this->assertEquals(['file1'=>$file1->hashName(), 'file2'=>$file2->hashName(), 'other'=>'test'], $attributes);
         $this->assertEquals([$file1, $file2], $files);
-
     }
 }
