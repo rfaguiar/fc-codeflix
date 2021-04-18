@@ -21,3 +21,4 @@ RUN rm -rf /var/www/html && ln -s public html
 USER www-data
 
 EXPOSE 9000
+ENTRYPOINT ["php-fpm"]
