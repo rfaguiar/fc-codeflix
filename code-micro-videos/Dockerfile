@@ -18,6 +18,6 @@ WORKDIR /var/www
 
 RUN rm -rf /var/www/html && ln -s public html
 
-#USER www-data
+USER www-data
 
 EXPOSE 9000
