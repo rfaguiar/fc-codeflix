@@ -37,3 +37,12 @@ create-category-genre-table:
 
 create-rule-genres-categories:
 	php artisan make:rule GenresHasCategoriesRule;
+
+create-docker-prod:
+	docker build -t rfaguiar1/micro-videos-app-optmized -f Dockerfile.prod .;
+
+run-docker-optmized:
+	docker run --name app-optmized -d rfaguiar1/micro-videos-app-optmized;
+
+bash-docker-optmized:
+	docker exec -it app-optmized bash;
