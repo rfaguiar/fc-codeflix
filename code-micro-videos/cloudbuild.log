@@ -1,0 +1,930 @@
+starting build "7b44ec82-ed28-496f-8a0d-c8b1d815dab2"
+
+FETCHSOURCE
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint: 	git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint: 	git branch -m <name>
+Initialized empty Git repository in /workspace/.git/
+From https://github.com/rfaguiar/fc-codeflix
+ * branch            10bc7d6bfd0474b8d4bbf192673d32d2bdc1db22 -> FETCH_HEAD
+HEAD is now at 10bc7d6 adjust cloud build env testing file name
+BUILD
+Starting Step #0 - "Rodando docker-compose"
+Step #0 - "Rodando docker-compose": Pulling image: gcr.io/united-potion-311115/docker-compose:1.28.2
+Step #0 - "Rodando docker-compose": 1.28.2: Pulling from united-potion-311115/docker-compose
+Step #0 - "Rodando docker-compose": 6e0aa5e7af40: Pulling fs layer
+Step #0 - "Rodando docker-compose": d47239a868b3: Pulling fs layer
+Step #0 - "Rodando docker-compose": 49cbb10cca85: Pulling fs layer
+Step #0 - "Rodando docker-compose": 6636782b312e: Pulling fs layer
+Step #0 - "Rodando docker-compose": 6636782b312e: Waiting
+Step #0 - "Rodando docker-compose": d47239a868b3: Verifying Checksum
+Step #0 - "Rodando docker-compose": d47239a868b3: Download complete
+Step #0 - "Rodando docker-compose": 49cbb10cca85: Verifying Checksum
+Step #0 - "Rodando docker-compose": 49cbb10cca85: Download complete
+Step #0 - "Rodando docker-compose": 6e0aa5e7af40: Verifying Checksum
+Step #0 - "Rodando docker-compose": 6e0aa5e7af40: Download complete
+Step #0 - "Rodando docker-compose": 6e0aa5e7af40: Pull complete
+Step #0 - "Rodando docker-compose": 6636782b312e: Verifying Checksum
+Step #0 - "Rodando docker-compose": 6636782b312e: Download complete
+Step #0 - "Rodando docker-compose": d47239a868b3: Pull complete
+Step #0 - "Rodando docker-compose": 49cbb10cca85: Pull complete
+Step #0 - "Rodando docker-compose": 6636782b312e: Pull complete
+Step #0 - "Rodando docker-compose": Digest: sha256:0c9a674c22b3e4b55c9ee39aa99a854cece4356c933f7f2c9c153f6540d8c437
+Step #0 - "Rodando docker-compose": Status: Downloaded newer image for gcr.io/united-potion-311115/docker-compose:1.28.2
+Step #0 - "Rodando docker-compose": gcr.io/united-potion-311115/docker-compose:1.28.2
+Step #0 - "Rodando docker-compose": Building with native build. Learn about native build in Compose here: https://docs.docker.com/go/compose-native-build/
+Step #0 - "Rodando docker-compose": Creating network "code-micro-videos_app-network" with driver "bridge"
+Step #0 - "Rodando docker-compose": Building db
+Step #0 - "Rodando docker-compose": Sending build context to Docker daemon  3.072kB
+Step #0 - "Rodando docker-compose":
+Step #0 - "Rodando docker-compose": Step 1/2 : FROM mysql:5.7
+Step #0 - "Rodando docker-compose": 5.7: Pulling from library/mysql
+Step #0 - "Rodando docker-compose": f7ec5a41d630: Pulling fs layer
+Step #0 - "Rodando docker-compose": 9444bb562699: Pulling fs layer
+Step #0 - "Rodando docker-compose": 6a4207b96940: Pulling fs layer
+Step #0 - "Rodando docker-compose": 181cefd361ce: Pulling fs layer
+Step #0 - "Rodando docker-compose": 8a2090759d8a: Pulling fs layer
+Step #0 - "Rodando docker-compose": 15f235e0d7ee: Pulling fs layer
+Step #0 - "Rodando docker-compose": d870539cd9db: Pulling fs layer
+Step #0 - "Rodando docker-compose": 7310c448ab4f: Pulling fs layer
+Step #0 - "Rodando docker-compose": 4a72aac2e800: Pulling fs layer
+Step #0 - "Rodando docker-compose": b1ab932f17c4: Pulling fs layer
+Step #0 - "Rodando docker-compose": 1a985de740ee: Pulling fs layer
+Step #0 - "Rodando docker-compose": 181cefd361ce: Waiting
+Step #0 - "Rodando docker-compose": 8a2090759d8a: Waiting
+Step #0 - "Rodando docker-compose": 15f235e0d7ee: Waiting
+Step #0 - "Rodando docker-compose": d870539cd9db: Waiting
+Step #0 - "Rodando docker-compose": 7310c448ab4f: Waiting
+Step #0 - "Rodando docker-compose": 4a72aac2e800: Waiting
+Step #0 - "Rodando docker-compose": b1ab932f17c4: Waiting
+Step #0 - "Rodando docker-compose": 1a985de740ee: Waiting
+Step #0 - "Rodando docker-compose": 9444bb562699: Verifying Checksum
+Step #0 - "Rodando docker-compose": 9444bb562699: Download complete
+Step #0 - "Rodando docker-compose": 6a4207b96940: Verifying Checksum
+Step #0 - "Rodando docker-compose": 6a4207b96940: Download complete
+Step #0 - "Rodando docker-compose": 181cefd361ce: Download complete
+Step #0 - "Rodando docker-compose": 8a2090759d8a: Verifying Checksum
+Step #0 - "Rodando docker-compose": 8a2090759d8a: Download complete
+Step #0 - "Rodando docker-compose": d870539cd9db: Verifying Checksum
+Step #0 - "Rodando docker-compose": d870539cd9db: Download complete
+Step #0 - "Rodando docker-compose": 7310c448ab4f: Verifying Checksum
+Step #0 - "Rodando docker-compose": 7310c448ab4f: Download complete
+Step #0 - "Rodando docker-compose": f7ec5a41d630: Verifying Checksum
+Step #0 - "Rodando docker-compose": f7ec5a41d630: Download complete
+Step #0 - "Rodando docker-compose": 15f235e0d7ee: Verifying Checksum
+Step #0 - "Rodando docker-compose": 15f235e0d7ee: Download complete
+Step #0 - "Rodando docker-compose": b1ab932f17c4: Verifying Checksum
+Step #0 - "Rodando docker-compose": b1ab932f17c4: Download complete
+Step #0 - "Rodando docker-compose": 1a985de740ee: Verifying Checksum
+Step #0 - "Rodando docker-compose": 1a985de740ee: Download complete
+Step #0 - "Rodando docker-compose": 4a72aac2e800: Verifying Checksum
+Step #0 - "Rodando docker-compose": 4a72aac2e800: Download complete
+Step #0 - "Rodando docker-compose": f7ec5a41d630: Pull complete
+Step #0 - "Rodando docker-compose": 9444bb562699: Pull complete
+Step #0 - "Rodando docker-compose": 6a4207b96940: Pull complete
+Step #0 - "Rodando docker-compose": 181cefd361ce: Pull complete
+Step #0 - "Rodando docker-compose": 8a2090759d8a: Pull complete
+Step #0 - "Rodando docker-compose": 15f235e0d7ee: Pull complete
+Step #0 - "Rodando docker-compose": d870539cd9db: Pull complete
+Step #0 - "Rodando docker-compose": 7310c448ab4f: Pull complete
+Step #0 - "Rodando docker-compose": 4a72aac2e800: Pull complete
+Step #0 - "Rodando docker-compose": b1ab932f17c4: Pull complete
+Step #0 - "Rodando docker-compose": 1a985de740ee: Pull complete
+Step #0 - "Rodando docker-compose": Digest: sha256:e42a18d0bd0aa746a734a49cbbcc079ccdf6681c474a238d38e79dc0884e0ecc
+Step #0 - "Rodando docker-compose": Status: Downloaded newer image for mysql:5.7
+Step #0 - "Rodando docker-compose":  ---> 450379344707
+Step #0 - "Rodando docker-compose": Step 2/2 : RUN usermod -u 1000 mysql
+Step #0 - "Rodando docker-compose":  ---> Running in 4e783810ec62
+Step #0 - "Rodando docker-compose": Removing intermediate container 4e783810ec62
+Step #0 - "Rodando docker-compose":  ---> 31c7661355b3
+Step #0 - "Rodando docker-compose": Successfully built 31c7661355b3
+Step #0 - "Rodando docker-compose": Successfully tagged code-micro-videos_db:latest
+Step #0 - "Rodando docker-compose": Image for service db was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+Step #0 - "Rodando docker-compose": Pulling redis (redis:alpine)...
+Step #0 - "Rodando docker-compose": alpine: Pulling from library/redis
+Step #0 - "Rodando docker-compose": Digest: sha256:cd68f7db2caeff01a62bab0cdb5630e86e2a608b0aba3b988b1d13dcf3cfdedb
+Step #0 - "Rodando docker-compose": Status: Downloaded newer image for redis:alpine
+Step #0 - "Rodando docker-compose": Building app
+Step #0 - "Rodando docker-compose": Sending build context to Docker daemon  827.9kB
+Step #0 - "Rodando docker-compose":
+Step #0 - "Rodando docker-compose": Step 1/13 : FROM php:7.3.6-fpm-alpine3.9
+Step #0 - "Rodando docker-compose": 7.3.6-fpm-alpine3.9: Pulling from library/php
+Step #0 - "Rodando docker-compose": e7c96db7181b: Already exists
+Step #0 - "Rodando docker-compose": 7270d632124c: Pulling fs layer
+Step #0 - "Rodando docker-compose": 2ccb07e9b7f7: Pulling fs layer
+Step #0 - "Rodando docker-compose": 112aa0ae7f66: Pulling fs layer
+Step #0 - "Rodando docker-compose": 447c10ce58af: Pulling fs layer
+Step #0 - "Rodando docker-compose": 290595a2eede: Pulling fs layer
+Step #0 - "Rodando docker-compose": 17b350aaf1c1: Pulling fs layer
+Step #0 - "Rodando docker-compose": cfab03b9f728: Pulling fs layer
+Step #0 - "Rodando docker-compose": 6aad12fa76f6: Pulling fs layer
+Step #0 - "Rodando docker-compose": fd9c23956976: Pulling fs layer
+Step #0 - "Rodando docker-compose": 447c10ce58af: Waiting
+Step #0 - "Rodando docker-compose": 290595a2eede: Waiting
+Step #0 - "Rodando docker-compose": 17b350aaf1c1: Waiting
+Step #0 - "Rodando docker-compose": 6aad12fa76f6: Waiting
+Step #0 - "Rodando docker-compose": fd9c23956976: Waiting
+Step #0 - "Rodando docker-compose": cfab03b9f728: Waiting
+Step #0 - "Rodando docker-compose": 112aa0ae7f66: Download complete
+Step #0 - "Rodando docker-compose": 2ccb07e9b7f7: Verifying Checksum
+Step #0 - "Rodando docker-compose": 2ccb07e9b7f7: Download complete
+Step #0 - "Rodando docker-compose": 7270d632124c: Verifying Checksum
+Step #0 - "Rodando docker-compose": 7270d632124c: Download complete
+Step #0 - "Rodando docker-compose": 290595a2eede: Verifying Checksum
+Step #0 - "Rodando docker-compose": 290595a2eede: Download complete
+Step #0 - "Rodando docker-compose": 7270d632124c: Pull complete
+Step #0 - "Rodando docker-compose": 447c10ce58af: Verifying Checksum
+Step #0 - "Rodando docker-compose": 447c10ce58af: Download complete
+Step #0 - "Rodando docker-compose": cfab03b9f728: Verifying Checksum
+Step #0 - "Rodando docker-compose": cfab03b9f728: Download complete
+Step #0 - "Rodando docker-compose": 2ccb07e9b7f7: Pull complete
+Step #0 - "Rodando docker-compose": 17b350aaf1c1: Verifying Checksum
+Step #0 - "Rodando docker-compose": 17b350aaf1c1: Download complete
+Step #0 - "Rodando docker-compose": 112aa0ae7f66: Pull complete
+Step #0 - "Rodando docker-compose": 6aad12fa76f6: Verifying Checksum
+Step #0 - "Rodando docker-compose": 6aad12fa76f6: Download complete
+Step #0 - "Rodando docker-compose": fd9c23956976: Verifying Checksum
+Step #0 - "Rodando docker-compose": fd9c23956976: Download complete
+Step #0 - "Rodando docker-compose": 447c10ce58af: Pull complete
+Step #0 - "Rodando docker-compose": 290595a2eede: Pull complete
+Step #0 - "Rodando docker-compose": 17b350aaf1c1: Pull complete
+Step #0 - "Rodando docker-compose": cfab03b9f728: Pull complete
+Step #0 - "Rodando docker-compose": 6aad12fa76f6: Pull complete
+Step #0 - "Rodando docker-compose": fd9c23956976: Pull complete
+Step #0 - "Rodando docker-compose": Digest: sha256:e985eac009df5603958334320c4d2271ddfbd72ef0c593580f59dd8c9c71aaa0
+Step #0 - "Rodando docker-compose": Status: Downloaded newer image for php:7.3.6-fpm-alpine3.9
+Step #0 - "Rodando docker-compose":  ---> 7b1e87c5c636
+Step #0 - "Rodando docker-compose": Step 2/13 : RUN apk add --no-cache shadow openssl bash mysql-client nodejs npm git make
+Step #0 - "Rodando docker-compose":  ---> Running in 455e1ac74248
+Step #0 - "Rodando docker-compose": fetch http://dl-cdn.alpinelinux.org/alpine/v3.9/main/x86_64/APKINDEX.tar.gz
+Step #0 - "Rodando docker-compose": fetch http://dl-cdn.alpinelinux.org/alpine/v3.9/community/x86_64/APKINDEX.tar.gz
+Step #0 - "Rodando docker-compose": (1/17) Installing readline (7.0.003-r1)
+Step #0 - "Rodando docker-compose": (2/17) Installing bash (4.4.19-r1)
+Step #0 - "Rodando docker-compose": Executing bash-4.4.19-r1.post-install
+Step #0 - "Rodando docker-compose": (3/17) Installing expat (2.2.8-r0)
+Step #0 - "Rodando docker-compose": (4/17) Installing pcre2 (10.32-r1)
+Step #0 - "Rodando docker-compose": (5/17) Installing git (2.20.4-r0)
+Step #0 - "Rodando docker-compose": (6/17) Installing make (4.2.1-r2)
+Step #0 - "Rodando docker-compose": (7/17) Installing mariadb-common (10.3.25-r0)
+Step #0 - "Rodando docker-compose": (8/17) Installing libgcc (8.3.0-r0)
+Step #0 - "Rodando docker-compose": (9/17) Installing libstdc++ (8.3.0-r0)
+Step #0 - "Rodando docker-compose": (10/17) Installing mariadb-client (10.3.25-r0)
+Step #0 - "Rodando docker-compose": (11/17) Installing mysql-client (10.3.25-r0)
+Step #0 - "Rodando docker-compose": (12/17) Installing c-ares (1.15.0-r0)
+Step #0 - "Rodando docker-compose": (13/17) Installing libuv (1.25.0-r0)
+Step #0 - "Rodando docker-compose": (14/17) Installing nodejs (10.19.0-r0)
+Step #0 - "Rodando docker-compose": (15/17) Installing npm (10.19.0-r0)
+Step #0 - "Rodando docker-compose": (16/17) Installing linux-pam (1.3.0-r0)
+Step #0 - "Rodando docker-compose": (17/17) Installing shadow (4.5-r2)
+Step #0 - "Rodando docker-compose": Executing busybox-1.29.3-r10.trigger
+Step #0 - "Rodando docker-compose": OK: 119 MiB in 47 packages
+Step #0 - "Rodando docker-compose": Removing intermediate container 455e1ac74248
+Step #0 - "Rodando docker-compose":  ---> 4e23b43cf7b3
+Step #0 - "Rodando docker-compose": Step 3/13 : RUN docker-php-ext-install pdo pdo_mysql
+Step #0 - "Rodando docker-compose":  ---> Running in 534d2abbc75b
+Step #0 - "Rodando docker-compose": fetch http://dl-cdn.alpinelinux.org/alpine/v3.9/main/x86_64/APKINDEX.tar.gz
+Step #0 - "Rodando docker-compose": fetch http://dl-cdn.alpinelinux.org/alpine/v3.9/community/x86_64/APKINDEX.tar.gz
+Step #0 - "Rodando docker-compose": (1/24) Upgrading musl (1.1.20-r4 -> 1.1.20-r6)
+Step #0 - "Rodando docker-compose": (2/24) Installing m4 (1.4.18-r1)
+Step #0 - "Rodando docker-compose": (3/24) Installing libbz2 (1.0.6-r7)
+Step #0 - "Rodando docker-compose": (4/24) Installing perl (5.26.3-r1)
+Step #0 - "Rodando docker-compose": (5/24) Installing autoconf (2.69-r2)
+Step #0 - "Rodando docker-compose": (6/24) Installing pkgconf (1.6.0-r0)
+Step #0 - "Rodando docker-compose": (7/24) Installing dpkg-dev (1.19.2-r0)
+Step #0 - "Rodando docker-compose": (8/24) Installing dpkg (1.19.2-r0)
+Step #0 - "Rodando docker-compose": (9/24) Installing libmagic (5.36-r1)
+Step #0 - "Rodando docker-compose": (10/24) Installing file (5.36-r1)
+Step #0 - "Rodando docker-compose": (11/24) Installing binutils (2.31.1-r2)
+Step #0 - "Rodando docker-compose": (12/24) Installing gmp (6.1.2-r1)
+Step #0 - "Rodando docker-compose": (13/24) Installing isl (0.18-r0)
+Step #0 - "Rodando docker-compose": (14/24) Installing libgomp (8.3.0-r0)
+Step #0 - "Rodando docker-compose": (15/24) Installing libatomic (8.3.0-r0)
+Step #0 - "Rodando docker-compose": (16/24) Installing mpfr3 (3.1.5-r1)
+Step #0 - "Rodando docker-compose": (17/24) Installing mpc1 (1.0.3-r1)
+Step #0 - "Rodando docker-compose": (18/24) Installing gcc (8.3.0-r0)
+Step #0 - "Rodando docker-compose": (19/24) Installing musl-dev (1.1.20-r6)
+Step #0 - "Rodando docker-compose": (20/24) Installing libc-dev (0.7.1-r0)
+Step #0 - "Rodando docker-compose": (21/24) Installing g++ (8.3.0-r0)
+Step #0 - "Rodando docker-compose": (22/24) Installing re2c (1.1.1-r0)
+Step #0 - "Rodando docker-compose": (23/24) Installing .phpize-deps (0)
+Step #0 - "Rodando docker-compose": (24/24) Upgrading musl-utils (1.1.20-r4 -> 1.1.20-r6)
+Step #0 - "Rodando docker-compose": Executing busybox-1.29.3-r10.trigger
+Step #0 - "Rodando docker-compose": OK: 317 MiB in 69 packages
+Step #0 - "Rodando docker-compose": Configuring for:
+Step #0 - "Rodando docker-compose": PHP Api Version:         20180731
+Step #0 - "Rodando docker-compose": Zend Module Api No:      20180731
+Step #0 - "Rodando docker-compose": Zend Extension Api No:   320180731
+Step #0 - "Rodando docker-compose": checking for grep that handles long lines and -e... /bin/grep
+Step #0 - "Rodando docker-compose": checking for egrep... /bin/grep -E
+Step #0 - "Rodando docker-compose": checking for a sed that does not truncate output... /bin/sed
+Step #0 - "Rodando docker-compose": checking for cc... cc
+Step #0 - "Rodando docker-compose": checking whether the C compiler works... yes
+Step #0 - "Rodando docker-compose": checking for C compiler default output file name... a.out
+Step #0 - "Rodando docker-compose": checking for suffix of executables...
+Step #0 - "Rodando docker-compose": checking whether we are cross compiling... no
+Step #0 - "Rodando docker-compose": checking for suffix of object files... o
+Step #0 - "Rodando docker-compose": checking whether we are using the GNU C compiler... yes
+Step #0 - "Rodando docker-compose": checking whether cc accepts -g... yes
+Step #0 - "Rodando docker-compose": checking for cc option to accept ISO C89... none needed
+Step #0 - "Rodando docker-compose": checking how to run the C preprocessor... cc -E
+Step #0 - "Rodando docker-compose": checking for icc... no
+Step #0 - "Rodando docker-compose": checking for suncc... no
+Step #0 - "Rodando docker-compose": checking whether cc understands -c and -o together... yes
+Step #0 - "Rodando docker-compose": checking for system library directory... lib
+Step #0 - "Rodando docker-compose": checking if compiler supports -R... no
+Step #0 - "Rodando docker-compose": checking if compiler supports -Wl,-rpath,... yes
+Step #0 - "Rodando docker-compose": checking build system type... x86_64-pc-linux-musl
+Step #0 - "Rodando docker-compose": checking host system type... x86_64-pc-linux-musl
+Step #0 - "Rodando docker-compose": checking target system type... x86_64-pc-linux-musl
+Step #0 - "Rodando docker-compose": checking for PHP prefix... /usr/local
+Step #0 - "Rodando docker-compose": checking for PHP includes... -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib
+Step #0 - "Rodando docker-compose": checking for PHP extension directory... /usr/local/lib/php/extensions/no-debug-non-zts-20180731
+Step #0 - "Rodando docker-compose": checking for PHP installed headers prefix... /usr/local/include/php
+Step #0 - "Rodando docker-compose": checking if debug is enabled... no
+Step #0 - "Rodando docker-compose": checking if zts is enabled... no
+Step #0 - "Rodando docker-compose": checking for re2c... re2c
+Step #0 - "Rodando docker-compose": checking for re2c version... 1.1.1 (ok)
+Step #0 - "Rodando docker-compose": checking for gawk... no
+Step #0 - "Rodando docker-compose": checking for nawk... no
+Step #0 - "Rodando docker-compose": checking for awk... awk
+Step #0 - "Rodando docker-compose": checking if awk is broken... no
+Step #0 - "Rodando docker-compose": checking whether to enable PDO support... yes, shared
+Step #0 - "Rodando docker-compose": checking for ld used by cc... /usr/x86_64-alpine-linux-musl/bin/ld
+Step #0 - "Rodando docker-compose": checking if the linker (/usr/x86_64-alpine-linux-musl/bin/ld) is GNU ld... yes
+Step #0 - "Rodando docker-compose": checking for /usr/x86_64-alpine-linux-musl/bin/ld option to reload object files... -r
+Step #0 - "Rodando docker-compose": checking for BSD-compatible nm... /usr/bin/nm -B
+Step #0 - "Rodando docker-compose": checking whether ln -s works... yes
+Step #0 - "Rodando docker-compose": checking how to recognize dependent libraries... pass_all
+Step #0 - "Rodando docker-compose": checking for ANSI C header files... yes
+Step #0 - "Rodando docker-compose": checking for sys/types.h... yes
+Step #0 - "Rodando docker-compose": checking for sys/stat.h... yes
+Step #0 - "Rodando docker-compose": checking for stdlib.h... yes
+Step #0 - "Rodando docker-compose": checking for string.h... yes
+Step #0 - "Rodando docker-compose": checking for memory.h... yes
+Step #0 - "Rodando docker-compose": checking for strings.h... yes
+Step #0 - "Rodando docker-compose": checking for inttypes.h... yes
+Step #0 - "Rodando docker-compose": checking for stdint.h... yes
+Step #0 - "Rodando docker-compose": checking for unistd.h... yes
+Step #0 - "Rodando docker-compose": checking dlfcn.h usability... yes
+Step #0 - "Rodando docker-compose": checking dlfcn.h presence... yes
+Step #0 - "Rodando docker-compose": checking for dlfcn.h... yes
+Step #0 - "Rodando docker-compose": checking the maximum length of command line arguments... 98304
+Step #0 - "Rodando docker-compose": checking command to parse /usr/bin/nm -B output from cc object... ok
+Step #0 - "Rodando docker-compose": checking for objdir... .libs
+Step #0 - "Rodando docker-compose": checking for ar... ar
+Step #0 - "Rodando docker-compose": checking for ranlib... ranlib
+Step #0 - "Rodando docker-compose": checking for strip... strip
+Step #0 - "Rodando docker-compose": checking if cc supports -fno-rtti -fno-exceptions... no
+Step #0 - "Rodando docker-compose": checking for cc option to produce PIC... -fPIC
+Step #0 - "Rodando docker-compose": checking if cc PIC flag -fPIC works... yes
+Step #0 - "Rodando docker-compose": checking if cc static flag -static works... yes
+Step #0 - "Rodando docker-compose": checking if cc supports -c -o file.o... yes
+Step #0 - "Rodando docker-compose": checking whether the cc linker (/usr/x86_64-alpine-linux-musl/bin/ld -m elf_x86_64) supports shared libraries... yes
+Step #0 - "Rodando docker-compose": checking whether -lc should be explicitly linked in... no
+Step #0 - "Rodando docker-compose": checking dynamic linker characteristics... GNU/Linux ld.so
+Step #0 - "Rodando docker-compose": checking how to hardcode library paths into programs... immediate
+Step #0 - "Rodando docker-compose": checking whether stripping libraries is possible... yes
+Step #0 - "Rodando docker-compose": checking if libtool supports shared libraries... yes
+Step #0 - "Rodando docker-compose": checking whether to build shared libraries... yes
+Step #0 - "Rodando docker-compose": checking whether to build static libraries... no
+Step #0 - "Rodando docker-compose":
+Step #0 - "Rodando docker-compose": creating libtool
+Step #0 - "Rodando docker-compose": appending configuration tag "CXX" to libtool
+Step #0 - "Rodando docker-compose": configure: creating ./config.status
+Step #0 - "Rodando docker-compose": config.status: creating config.h
+Step #0 - "Rodando docker-compose": /bin/sh /usr/src/php/ext/pdo/libtool --mode=compile cc  -I. -I/usr/src/php/ext/pdo -DPHP_ATOM_INC -I/usr/src/php/ext/pdo/include -I/usr/src/php/ext/pdo/main -I/usr/src/php/ext/pdo -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib  -fstack-protector-strong -fpic -fpie -O2 -DHAVE_CONFIG_H  -fstack-protector-strong -fpic -fpie -O2   -c /usr/src/php/ext/pdo/pdo.c -o pdo.lo
+Step #0 - "Rodando docker-compose": mkdir .libs
+Step #0 - "Rodando docker-compose":  cc -I. -I/usr/src/php/ext/pdo -DPHP_ATOM_INC -I/usr/src/php/ext/pdo/include -I/usr/src/php/ext/pdo/main -I/usr/src/php/ext/pdo -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib -fstack-protector-strong -fpic -fpie -O2 -DHAVE_CONFIG_H -fstack-protector-strong -fpic -fpie -O2 -c /usr/src/php/ext/pdo/pdo.c  -fPIC -DPIC -o .libs/pdo.o
+Step #0 - "Rodando docker-compose": /bin/sh /usr/src/php/ext/pdo/libtool --mode=compile cc  -I. -I/usr/src/php/ext/pdo -DPHP_ATOM_INC -I/usr/src/php/ext/pdo/include -I/usr/src/php/ext/pdo/main -I/usr/src/php/ext/pdo -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib  -fstack-protector-strong -fpic -fpie -O2 -DHAVE_CONFIG_H  -fstack-protector-strong -fpic -fpie -O2   -c /usr/src/php/ext/pdo/pdo_dbh.c -o pdo_dbh.lo
+Step #0 - "Rodando docker-compose":  cc -I. -I/usr/src/php/ext/pdo -DPHP_ATOM_INC -I/usr/src/php/ext/pdo/include -I/usr/src/php/ext/pdo/main -I/usr/src/php/ext/pdo -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib -fstack-protector-strong -fpic -fpie -O2 -DHAVE_CONFIG_H -fstack-protector-strong -fpic -fpie -O2 -c /usr/src/php/ext/pdo/pdo_dbh.c  -fPIC -DPIC -o .libs/pdo_dbh.o
+Step #0 - "Rodando docker-compose": /bin/sh /usr/src/php/ext/pdo/libtool --mode=compile cc  -I. -I/usr/src/php/ext/pdo -DPHP_ATOM_INC -I/usr/src/php/ext/pdo/include -I/usr/src/php/ext/pdo/main -I/usr/src/php/ext/pdo -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib  -fstack-protector-strong -fpic -fpie -O2 -DHAVE_CONFIG_H  -fstack-protector-strong -fpic -fpie -O2   -c /usr/src/php/ext/pdo/pdo_stmt.c -o pdo_stmt.lo
+Step #0 - "Rodando docker-compose":  cc -I. -I/usr/src/php/ext/pdo -DPHP_ATOM_INC -I/usr/src/php/ext/pdo/include -I/usr/src/php/ext/pdo/main -I/usr/src/php/ext/pdo -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib -fstack-protector-strong -fpic -fpie -O2 -DHAVE_CONFIG_H -fstack-protector-strong -fpic -fpie -O2 -c /usr/src/php/ext/pdo/pdo_stmt.c  -fPIC -DPIC -o .libs/pdo_stmt.o
+Step #0 - "Rodando docker-compose": /bin/sh /usr/src/php/ext/pdo/libtool --mode=compile cc  -I. -I/usr/src/php/ext/pdo -DPHP_ATOM_INC -I/usr/src/php/ext/pdo/include -I/usr/src/php/ext/pdo/main -I/usr/src/php/ext/pdo -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib  -fstack-protector-strong -fpic -fpie -O2 -DHAVE_CONFIG_H  -fstack-protector-strong -fpic -fpie -O2   -c /usr/src/php/ext/pdo/pdo_sql_parser.c -o pdo_sql_parser.lo
+Step #0 - "Rodando docker-compose":  cc -I. -I/usr/src/php/ext/pdo -DPHP_ATOM_INC -I/usr/src/php/ext/pdo/include -I/usr/src/php/ext/pdo/main -I/usr/src/php/ext/pdo -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib -fstack-protector-strong -fpic -fpie -O2 -DHAVE_CONFIG_H -fstack-protector-strong -fpic -fpie -O2 -c /usr/src/php/ext/pdo/pdo_sql_parser.c  -fPIC -DPIC -o .libs/pdo_sql_parser.o
+Step #0 - "Rodando docker-compose": /bin/sh /usr/src/php/ext/pdo/libtool --mode=compile cc  -I. -I/usr/src/php/ext/pdo -DPHP_ATOM_INC -I/usr/src/php/ext/pdo/include -I/usr/src/php/ext/pdo/main -I/usr/src/php/ext/pdo -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib  -fstack-protector-strong -fpic -fpie -O2 -DHAVE_CONFIG_H  -fstack-protector-strong -fpic -fpie -O2   -c /usr/src/php/ext/pdo/pdo_sqlstate.c -o pdo_sqlstate.lo
+Step #0 - "Rodando docker-compose":  cc -I. -I/usr/src/php/ext/pdo -DPHP_ATOM_INC -I/usr/src/php/ext/pdo/include -I/usr/src/php/ext/pdo/main -I/usr/src/php/ext/pdo -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib -fstack-protector-strong -fpic -fpie -O2 -DHAVE_CONFIG_H -fstack-protector-strong -fpic -fpie -O2 -c /usr/src/php/ext/pdo/pdo_sqlstate.c  -fPIC -DPIC -o .libs/pdo_sqlstate.o
+Step #0 - "Rodando docker-compose": /bin/sh /usr/src/php/ext/pdo/libtool --mode=link cc -DPHP_ATOM_INC -I/usr/src/php/ext/pdo/include -I/usr/src/php/ext/pdo/main -I/usr/src/php/ext/pdo -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib  -fstack-protector-strong -fpic -fpie -O2 -DHAVE_CONFIG_H  -fstack-protector-strong -fpic -fpie -O2  -Wl,-O1 -Wl,--hash-style=both -pie  -o pdo.la -export-dynamic -avoid-version -prefer-pic -module -rpath /usr/src/php/ext/pdo/modules  pdo.lo pdo_dbh.lo pdo_stmt.lo pdo_sql_parser.lo pdo_sqlstate.lo
+Step #0 - "Rodando docker-compose": cc -shared  .libs/pdo.o .libs/pdo_dbh.o .libs/pdo_stmt.o .libs/pdo_sql_parser.o .libs/pdo_sqlstate.o   -Wl,-O1 -Wl,--hash-style=both -Wl,-soname -Wl,pdo.so -o .libs/pdo.so
+Step #0 - "Rodando docker-compose": creating pdo.la
+Step #0 - "Rodando docker-compose": (cd .libs && rm -f pdo.la && ln -s ../pdo.la pdo.la)
+Step #0 - "Rodando docker-compose": /bin/sh /usr/src/php/ext/pdo/libtool --mode=install cp ./pdo.la /usr/src/php/ext/pdo/modules
+Step #0 - "Rodando docker-compose": cp ./.libs/pdo.so /usr/src/php/ext/pdo/modules/pdo.so
+Step #0 - "Rodando docker-compose": cp ./.libs/pdo.lai /usr/src/php/ext/pdo/modules/pdo.la
+Step #0 - "Rodando docker-compose": PATH="$PATH:/sbin" ldconfig -n /usr/src/php/ext/pdo/modules
+Step #0 - "Rodando docker-compose": ----------------------------------------------------------------------
+Step #0 - "Rodando docker-compose": Libraries have been installed in:
+Step #0 - "Rodando docker-compose":    /usr/src/php/ext/pdo/modules
+Step #0 - "Rodando docker-compose":
+Step #0 - "Rodando docker-compose": If you ever happen to want to link against installed libraries
+Step #0 - "Rodando docker-compose": in a given directory, LIBDIR, you must either use libtool, and
+Step #0 - "Rodando docker-compose": specify the full pathname of the library, or use the `-LLIBDIR'
+Step #0 - "Rodando docker-compose": flag during linking and do at least one of the following:
+Step #0 - "Rodando docker-compose":    - add LIBDIR to the `LD_LIBRARY_PATH' environment variable
+Step #0 - "Rodando docker-compose":      during execution
+Step #0 - "Rodando docker-compose":    - add LIBDIR to the `LD_RUN_PATH' environment variable
+Step #0 - "Rodando docker-compose":      during linking
+Step #0 - "Rodando docker-compose":    - use the `-Wl,--rpath -Wl,LIBDIR' linker flag
+Step #0 - "Rodando docker-compose":
+Step #0 - "Rodando docker-compose": See any operating system documentation about shared libraries for
+Step #0 - "Rodando docker-compose": more information, such as the ld(1) and ld.so(8) manual pages.
+Step #0 - "Rodando docker-compose": ----------------------------------------------------------------------
+Step #0 - "Rodando docker-compose":
+Step #0 - "Rodando docker-compose": Build complete.
+Step #0 - "Rodando docker-compose": Don't forget to run 'make test'.
+Step #0 - "Rodando docker-compose":
+Step #0 - "Rodando docker-compose": Installing shared extensions:     /usr/local/lib/php/extensions/no-debug-non-zts-20180731/
+Step #0 - "Rodando docker-compose": Installing header files:          /usr/local/include/php/
+Step #0 - "Rodando docker-compose": Installing PDO headers:           /usr/local/include/php/ext/pdo/
+Step #0 - "Rodando docker-compose": [91m
+Step #0 - "Rodando docker-compose": warning: pdo (pdo.so) is already loaded!
+Step #0 - "Rodando docker-compose":
+Step #0 - "Rodando docker-compose": [0mfind . -name \*.gcno -o -name \*.gcda | xargs rm -f
+Step #0 - "Rodando docker-compose": find . -name \*.lo -o -name \*.o | xargs rm -f
+Step #0 - "Rodando docker-compose": find . -name \*.la -o -name \*.a | xargs rm -f
+Step #0 - "Rodando docker-compose": find . -name \*.so | xargs rm -f
+Step #0 - "Rodando docker-compose": find . -name .libs -a -type d|xargs rm -rf
+Step #0 - "Rodando docker-compose": rm -f libphp.la      modules/* libs/*
+Step #0 - "Rodando docker-compose": Configuring for:
+Step #0 - "Rodando docker-compose": PHP Api Version:         20180731
+Step #0 - "Rodando docker-compose": Zend Module Api No:      20180731
+Step #0 - "Rodando docker-compose": Zend Extension Api No:   320180731
+Step #0 - "Rodando docker-compose": checking for grep that handles long lines and -e... /bin/grep
+Step #0 - "Rodando docker-compose": checking for egrep... /bin/grep -E
+Step #0 - "Rodando docker-compose": checking for a sed that does not truncate output... /bin/sed
+Step #0 - "Rodando docker-compose": checking for cc... cc
+Step #0 - "Rodando docker-compose": checking whether the C compiler works... yes
+Step #0 - "Rodando docker-compose": checking for C compiler default output file name... a.out
+Step #0 - "Rodando docker-compose": checking for suffix of executables...
+Step #0 - "Rodando docker-compose": checking whether we are cross compiling... no
+Step #0 - "Rodando docker-compose": checking for suffix of object files... o
+Step #0 - "Rodando docker-compose": checking whether we are using the GNU C compiler... yes
+Step #0 - "Rodando docker-compose": checking whether cc accepts -g... yes
+Step #0 - "Rodando docker-compose": checking for cc option to accept ISO C89... none needed
+Step #0 - "Rodando docker-compose": checking how to run the C preprocessor... cc -E
+Step #0 - "Rodando docker-compose": checking for icc... no
+Step #0 - "Rodando docker-compose": checking for suncc... no
+Step #0 - "Rodando docker-compose": checking whether cc understands -c and -o together... yes
+Step #0 - "Rodando docker-compose": checking for system library directory... lib
+Step #0 - "Rodando docker-compose": checking if compiler supports -R... no
+Step #0 - "Rodando docker-compose": checking if compiler supports -Wl,-rpath,... yes
+Step #0 - "Rodando docker-compose": checking build system type... x86_64-pc-linux-musl
+Step #0 - "Rodando docker-compose": checking host system type... x86_64-pc-linux-musl
+Step #0 - "Rodando docker-compose": checking target system type... x86_64-pc-linux-musl
+Step #0 - "Rodando docker-compose": checking for PHP prefix... /usr/local
+Step #0 - "Rodando docker-compose": checking for PHP includes... -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib
+Step #0 - "Rodando docker-compose": checking for PHP extension directory... /usr/local/lib/php/extensions/no-debug-non-zts-20180731
+Step #0 - "Rodando docker-compose": checking for PHP installed headers prefix... /usr/local/include/php
+Step #0 - "Rodando docker-compose": checking if debug is enabled... no
+Step #0 - "Rodando docker-compose": checking if zts is enabled... no
+Step #0 - "Rodando docker-compose": checking for re2c... re2c
+Step #0 - "Rodando docker-compose": checking for re2c version... 1.1.1 (ok)
+Step #0 - "Rodando docker-compose": checking for gawk... no
+Step #0 - "Rodando docker-compose": checking for nawk... no
+Step #0 - "Rodando docker-compose": checking for awk... awk
+Step #0 - "Rodando docker-compose": checking if awk is broken... no
+Step #0 - "Rodando docker-compose": checking for MySQL support for PDO... yes, shared
+Step #0 - "Rodando docker-compose": checking for the location of libz... no
+Step #0 - "Rodando docker-compose": checking for MySQL UNIX socket location...
+Step #0 - "Rodando docker-compose": checking for PDO includes... checking for PDO includes... /usr/local/include/php/ext
+Step #0 - "Rodando docker-compose": checking for ld used by cc... /usr/x86_64-alpine-linux-musl/bin/ld
+Step #0 - "Rodando docker-compose": checking if the linker (/usr/x86_64-alpine-linux-musl/bin/ld) is GNU ld... yes
+Step #0 - "Rodando docker-compose": checking for /usr/x86_64-alpine-linux-musl/bin/ld option to reload object files... -r
+Step #0 - "Rodando docker-compose": checking for BSD-compatible nm... /usr/bin/nm -B
+Step #0 - "Rodando docker-compose": checking whether ln -s works... yes
+Step #0 - "Rodando docker-compose": checking how to recognize dependent libraries... pass_all
+Step #0 - "Rodando docker-compose": checking for ANSI C header files... yes
+Step #0 - "Rodando docker-compose": checking for sys/types.h... yes
+Step #0 - "Rodando docker-compose": checking for sys/stat.h... yes
+Step #0 - "Rodando docker-compose": checking for stdlib.h... yes
+Step #0 - "Rodando docker-compose": checking for string.h... yes
+Step #0 - "Rodando docker-compose": checking for memory.h... yes
+Step #0 - "Rodando docker-compose": checking for strings.h... yes
+Step #0 - "Rodando docker-compose": checking for inttypes.h... yes
+Step #0 - "Rodando docker-compose": checking for stdint.h... yes
+Step #0 - "Rodando docker-compose": checking for unistd.h... yes
+Step #0 - "Rodando docker-compose": checking dlfcn.h usability... yes
+Step #0 - "Rodando docker-compose": checking dlfcn.h presence... yes
+Step #0 - "Rodando docker-compose": checking for dlfcn.h... yes
+Step #0 - "Rodando docker-compose": checking the maximum length of command line arguments... 98304
+Step #0 - "Rodando docker-compose": checking command to parse /usr/bin/nm -B output from cc object... ok
+Step #0 - "Rodando docker-compose": checking for objdir... .libs
+Step #0 - "Rodando docker-compose": checking for ar... ar
+Step #0 - "Rodando docker-compose": checking for ranlib... ranlib
+Step #0 - "Rodando docker-compose": checking for strip... strip
+Step #0 - "Rodando docker-compose": checking if cc supports -fno-rtti -fno-exceptions... no
+Step #0 - "Rodando docker-compose": checking for cc option to produce PIC... -fPIC
+Step #0 - "Rodando docker-compose": checking if cc PIC flag -fPIC works... yes
+Step #0 - "Rodando docker-compose": checking if cc static flag -static works... yes
+Step #0 - "Rodando docker-compose": checking if cc supports -c -o file.o... yes
+Step #0 - "Rodando docker-compose": checking whether the cc linker (/usr/x86_64-alpine-linux-musl/bin/ld -m elf_x86_64) supports shared libraries... yes
+Step #0 - "Rodando docker-compose": checking whether -lc should be explicitly linked in... no
+Step #0 - "Rodando docker-compose": checking dynamic linker characteristics... GNU/Linux ld.so
+Step #0 - "Rodando docker-compose": checking how to hardcode library paths into programs... immediate
+Step #0 - "Rodando docker-compose": checking whether stripping libraries is possible... yes
+Step #0 - "Rodando docker-compose": checking if libtool supports shared libraries... yes
+Step #0 - "Rodando docker-compose": checking whether to build shared libraries... yes
+Step #0 - "Rodando docker-compose": checking whether to build static libraries... no
+Step #0 - "Rodando docker-compose":
+Step #0 - "Rodando docker-compose": creating libtool
+Step #0 - "Rodando docker-compose": appending configuration tag "CXX" to libtool
+Step #0 - "Rodando docker-compose": configure: creating ./config.status
+Step #0 - "Rodando docker-compose": config.status: creating config.h
+Step #0 - "Rodando docker-compose": /bin/sh /usr/src/php/ext/pdo_mysql/libtool --mode=compile cc -I/usr/local/include/php/ext -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -I. -I/usr/src/php/ext/pdo_mysql -DPHP_ATOM_INC -I/usr/src/php/ext/pdo_mysql/include -I/usr/src/php/ext/pdo_mysql/main -I/usr/src/php/ext/pdo_mysql -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib  -fstack-protector-strong -fpic -fpie -O2 -DHAVE_CONFIG_H  -fstack-protector-strong -fpic -fpie -O2   -c /usr/src/php/ext/pdo_mysql/pdo_mysql.c -o pdo_mysql.lo
+Step #0 - "Rodando docker-compose": mkdir .libs
+Step #0 - "Rodando docker-compose":  cc -I/usr/local/include/php/ext -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -I. -I/usr/src/php/ext/pdo_mysql -DPHP_ATOM_INC -I/usr/src/php/ext/pdo_mysql/include -I/usr/src/php/ext/pdo_mysql/main -I/usr/src/php/ext/pdo_mysql -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib -fstack-protector-strong -fpic -fpie -O2 -DHAVE_CONFIG_H -fstack-protector-strong -fpic -fpie -O2 -c /usr/src/php/ext/pdo_mysql/pdo_mysql.c  -fPIC -DPIC -o .libs/pdo_mysql.o
+Step #0 - "Rodando docker-compose": /bin/sh /usr/src/php/ext/pdo_mysql/libtool --mode=compile cc -I/usr/local/include/php/ext -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -I. -I/usr/src/php/ext/pdo_mysql -DPHP_ATOM_INC -I/usr/src/php/ext/pdo_mysql/include -I/usr/src/php/ext/pdo_mysql/main -I/usr/src/php/ext/pdo_mysql -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib  -fstack-protector-strong -fpic -fpie -O2 -DHAVE_CONFIG_H  -fstack-protector-strong -fpic -fpie -O2   -c /usr/src/php/ext/pdo_mysql/mysql_driver.c -o mysql_driver.lo
+Step #0 - "Rodando docker-compose":  cc -I/usr/local/include/php/ext -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -I. -I/usr/src/php/ext/pdo_mysql -DPHP_ATOM_INC -I/usr/src/php/ext/pdo_mysql/include -I/usr/src/php/ext/pdo_mysql/main -I/usr/src/php/ext/pdo_mysql -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib -fstack-protector-strong -fpic -fpie -O2 -DHAVE_CONFIG_H -fstack-protector-strong -fpic -fpie -O2 -c /usr/src/php/ext/pdo_mysql/mysql_driver.c  -fPIC -DPIC -o .libs/mysql_driver.o
+Step #0 - "Rodando docker-compose": /bin/sh /usr/src/php/ext/pdo_mysql/libtool --mode=compile cc -I/usr/local/include/php/ext -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -I. -I/usr/src/php/ext/pdo_mysql -DPHP_ATOM_INC -I/usr/src/php/ext/pdo_mysql/include -I/usr/src/php/ext/pdo_mysql/main -I/usr/src/php/ext/pdo_mysql -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib  -fstack-protector-strong -fpic -fpie -O2 -DHAVE_CONFIG_H  -fstack-protector-strong -fpic -fpie -O2   -c /usr/src/php/ext/pdo_mysql/mysql_statement.c -o mysql_statement.lo
+Step #0 - "Rodando docker-compose":  cc -I/usr/local/include/php/ext -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -I. -I/usr/src/php/ext/pdo_mysql -DPHP_ATOM_INC -I/usr/src/php/ext/pdo_mysql/include -I/usr/src/php/ext/pdo_mysql/main -I/usr/src/php/ext/pdo_mysql -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib -fstack-protector-strong -fpic -fpie -O2 -DHAVE_CONFIG_H -fstack-protector-strong -fpic -fpie -O2 -c /usr/src/php/ext/pdo_mysql/mysql_statement.c  -fPIC -DPIC -o .libs/mysql_statement.o
+Step #0 - "Rodando docker-compose": /bin/sh /usr/src/php/ext/pdo_mysql/libtool --mode=link cc -DPHP_ATOM_INC -I/usr/src/php/ext/pdo_mysql/include -I/usr/src/php/ext/pdo_mysql/main -I/usr/src/php/ext/pdo_mysql -I/usr/local/include/php -I/usr/local/include/php/main -I/usr/local/include/php/TSRM -I/usr/local/include/php/Zend -I/usr/local/include/php/ext -I/usr/local/include/php/ext/date/lib  -fstack-protector-strong -fpic -fpie -O2 -DHAVE_CONFIG_H  -fstack-protector-strong -fpic -fpie -O2  -Wl,-O1 -Wl,--hash-style=both -pie  -o pdo_mysql.la -export-dynamic -avoid-version -prefer-pic -module -rpath /usr/src/php/ext/pdo_mysql/modules  pdo_mysql.lo mysql_driver.lo mysql_statement.lo
+Step #0 - "Rodando docker-compose": cc -shared  .libs/pdo_mysql.o .libs/mysql_driver.o .libs/mysql_statement.o   -Wl,-O1 -Wl,--hash-style=both -Wl,-soname -Wl,pdo_mysql.so -o .libs/pdo_mysql.so
+Step #0 - "Rodando docker-compose": creating pdo_mysql.la
+Step #0 - "Rodando docker-compose": (cd .libs && rm -f pdo_mysql.la && ln -s ../pdo_mysql.la pdo_mysql.la)
+Step #0 - "Rodando docker-compose": /bin/sh /usr/src/php/ext/pdo_mysql/libtool --mode=install cp ./pdo_mysql.la /usr/src/php/ext/pdo_mysql/modules
+Step #0 - "Rodando docker-compose": cp ./.libs/pdo_mysql.so /usr/src/php/ext/pdo_mysql/modules/pdo_mysql.so
+Step #0 - "Rodando docker-compose": cp ./.libs/pdo_mysql.lai /usr/src/php/ext/pdo_mysql/modules/pdo_mysql.la
+Step #0 - "Rodando docker-compose": PATH="$PATH:/sbin" ldconfig -n /usr/src/php/ext/pdo_mysql/modules
+Step #0 - "Rodando docker-compose": ----------------------------------------------------------------------
+Step #0 - "Rodando docker-compose": Libraries have been installed in:
+Step #0 - "Rodando docker-compose":    /usr/src/php/ext/pdo_mysql/modules
+Step #0 - "Rodando docker-compose":
+Step #0 - "Rodando docker-compose": If you ever happen to want to link against installed libraries
+Step #0 - "Rodando docker-compose": in a given directory, LIBDIR, you must either use libtool, and
+Step #0 - "Rodando docker-compose": specify the full pathname of the library, or use the `-LLIBDIR'
+Step #0 - "Rodando docker-compose": flag during linking and do at least one of the following:
+Step #0 - "Rodando docker-compose":    - add LIBDIR to the `LD_LIBRARY_PATH' environment variable
+Step #0 - "Rodando docker-compose":      during execution
+Step #0 - "Rodando docker-compose":    - add LIBDIR to the `LD_RUN_PATH' environment variable
+Step #0 - "Rodando docker-compose":      during linking
+Step #0 - "Rodando docker-compose":    - use the `-Wl,--rpath -Wl,LIBDIR' linker flag
+Step #0 - "Rodando docker-compose":
+Step #0 - "Rodando docker-compose": See any operating system documentation about shared libraries for
+Step #0 - "Rodando docker-compose": more information, such as the ld(1) and ld.so(8) manual pages.
+Step #0 - "Rodando docker-compose": ----------------------------------------------------------------------
+Step #0 - "Rodando docker-compose":
+Step #0 - "Rodando docker-compose": Build complete.
+Step #0 - "Rodando docker-compose": Don't forget to run 'make test'.
+Step #0 - "Rodando docker-compose":
+Step #0 - "Rodando docker-compose": Installing shared extensions:     /usr/local/lib/php/extensions/no-debug-non-zts-20180731/
+Step #0 - "Rodando docker-compose": find . -name \*.gcno -o -name \*.gcda | xargs rm -f
+Step #0 - "Rodando docker-compose": find . -name \*.lo -o -name \*.o | xargs rm -f
+Step #0 - "Rodando docker-compose": find . -name \*.la -o -name \*.a | xargs rm -f
+Step #0 - "Rodando docker-compose": find . -name \*.so | xargs rm -f
+Step #0 - "Rodando docker-compose": find . -name .libs -a -type d|xargs rm -rf
+Step #0 - "Rodando docker-compose": rm -f libphp.la      modules/* libs/*
+Step #0 - "Rodando docker-compose": [91mWARNING: [0m[91mIgnoring APKINDEX.b89edf6e.tar.gz: No such file or directory
+Step #0 - "Rodando docker-compose": [0m[91mWARNING: Ignoring APKINDEX.737f7e01.tar.gz: No such file or directory
+Step #0 - "Rodando docker-compose": [0m(1/22) Purging .phpize-deps (0)
+Step #0 - "Rodando docker-compose": (2/22) Purging autoconf (2.69-r2)
+Step #0 - "Rodando docker-compose": (3/22) Purging m4 (1.4.18-r1)
+Step #0 - "Rodando docker-compose": (4/22) Purging dpkg-dev (1.19.2-r0)
+Step #0 - "Rodando docker-compose": (5/22) Purging perl (5.26.3-r1)
+Step #0 - "Rodando docker-compose": (6/22) Purging dpkg (1.19.2-r0)
+Step #0 - "Rodando docker-compose": (7/22) Purging file (5.36-r1)
+Step #0 - "Rodando docker-compose": (8/22) Purging g++ (8.3.0-r0)
+Step #0 - "Rodando docker-compose": (9/22) Purging gcc (8.3.0-r0)
+Step #0 - "Rodando docker-compose": (10/22) Purging binutils (2.31.1-r2)
+Step #0 - "Rodando docker-compose": (11/22) Purging libatomic (8.3.0-r0)
+Step #0 - "Rodando docker-compose": (12/22) Purging libgomp (8.3.0-r0)
+Step #0 - "Rodando docker-compose": (13/22) Purging libc-dev (0.7.1-r0)
+Step #0 - "Rodando docker-compose": (14/22) Purging musl-dev (1.1.20-r6)
+Step #0 - "Rodando docker-compose": (15/22) Purging pkgconf (1.6.0-r0)
+Step #0 - "Rodando docker-compose": (16/22) Purging re2c (1.1.1-r0)
+Step #0 - "Rodando docker-compose": (17/22) Purging libbz2 (1.0.6-r7)
+Step #0 - "Rodando docker-compose": (18/22) Purging libmagic (5.36-r1)
+Step #0 - "Rodando docker-compose": (19/22) Purging mpc1 (1.0.3-r1)
+Step #0 - "Rodando docker-compose": (20/22) Purging mpfr3 (3.1.5-r1)
+Step #0 - "Rodando docker-compose": (21/22) Purging isl (0.18-r0)
+Step #0 - "Rodando docker-compose": (22/22) Purging gmp (6.1.2-r1)
+Step #0 - "Rodando docker-compose": Executing busybox-1.29.3-r10.trigger
+Step #0 - "Rodando docker-compose": OK: 119 MiB in 47 packages
+Step #0 - "Rodando docker-compose": Removing intermediate container 534d2abbc75b
+Step #0 - "Rodando docker-compose":  ---> 9037436fa2ad
+Step #0 - "Rodando docker-compose": Step 4/13 : RUN touch /home/www-data/.bashrc | echo "PS1='\w\$ '" >> /home/www-data/.bashrc
+Step #0 - "Rodando docker-compose":  ---> Running in d91fe06ec669
+Step #0 - "Rodando docker-compose": Removing intermediate container d91fe06ec669
+Step #0 - "Rodando docker-compose":  ---> 380db3c6d27b
+Step #0 - "Rodando docker-compose": Step 5/13 : ENV DOCKERIZE_VERSION v0.6.1
+Step #0 - "Rodando docker-compose":  ---> Running in 221ab8dc83d6
+Step #0 - "Rodando docker-compose": Removing intermediate container 221ab8dc83d6
+Step #0 - "Rodando docker-compose":  ---> 76055f311071
+Step #0 - "Rodando docker-compose": Step 6/13 : RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz     && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz     && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+Step #0 - "Rodando docker-compose":  ---> Running in 1d08c4becf0d
+Step #0 - "Rodando docker-compose": [91mConnecting to github.com (140.82.112.4:443)
+Step #0 - "Rodando docker-compose": [0m[91mConnecting to github-releases.githubusercontent.com (185.199.108.154:443)
+Step #0 - "Rodando docker-compose": [0m[91mdockerize-linux-amd6 100% |********************************| 2935k  0:00:00 ETA
+Step #0 - "Rodando docker-compose":
+Step #0 - "Rodando docker-compose": [0mdockerize
+Step #0 - "Rodando docker-compose": Removing intermediate container 1d08c4becf0d
+Step #0 - "Rodando docker-compose":  ---> e47abaabaa37
+Step #0 - "Rodando docker-compose": Step 7/13 : RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+Step #0 - "Rodando docker-compose":  ---> Running in a5ace4eb5f19
+Step #0 - "Rodando docker-compose": All settings correct for using Composer
+Step #0 - "Rodando docker-compose": Downloading...
+Step #0 - "Rodando docker-compose":
+Step #0 - "Rodando docker-compose": Composer (version 2.0.12) successfully installed to: /usr/local/bin/composer
+Step #0 - "Rodando docker-compose": Use it: php /usr/local/bin/composer
+Step #0 - "Rodando docker-compose":
+Step #0 - "Rodando docker-compose": Removing intermediate container a5ace4eb5f19
+Step #0 - "Rodando docker-compose":  ---> 2da5aef0afea
+Step #0 - "Rodando docker-compose": Step 8/13 : RUN usermod -u 1000 www-data
+Step #0 - "Rodando docker-compose":  ---> Running in bd8ea1254944
+Step #0 - "Rodando docker-compose": Removing intermediate container bd8ea1254944
+Step #0 - "Rodando docker-compose":  ---> dac9b26dc200
+Step #0 - "Rodando docker-compose": Step 9/13 : WORKDIR /var/www
+Step #0 - "Rodando docker-compose":  ---> Running in 19d9ef6f1289
+Step #0 - "Rodando docker-compose": Removing intermediate container 19d9ef6f1289
+Step #0 - "Rodando docker-compose":  ---> f0eede1fca1a
+Step #0 - "Rodando docker-compose": Step 10/13 : RUN rm -rf /var/www/html && ln -s public html
+Step #0 - "Rodando docker-compose":  ---> Running in 5f4e6b72973e
+Step #0 - "Rodando docker-compose": Removing intermediate container 5f4e6b72973e
+Step #0 - "Rodando docker-compose":  ---> f48c0c90bdca
+Step #0 - "Rodando docker-compose": Step 11/13 : USER www-data
+Step #0 - "Rodando docker-compose":  ---> Running in f21e13f060ba
+Step #0 - "Rodando docker-compose": Removing intermediate container f21e13f060ba
+Step #0 - "Rodando docker-compose":  ---> 9ee2fa8ff9d0
+Step #0 - "Rodando docker-compose": Step 12/13 : EXPOSE 9000
+Step #0 - "Rodando docker-compose":  ---> Running in 6d89c05b61ad
+Step #0 - "Rodando docker-compose": Removing intermediate container 6d89c05b61ad
+Step #0 - "Rodando docker-compose":  ---> c64f8d443727
+Step #0 - "Rodando docker-compose": Step 13/13 : ENTRYPOINT ["php-fpm"]
+Step #0 - "Rodando docker-compose":  ---> Running in 375b0371c447
+Step #0 - "Rodando docker-compose": Removing intermediate container 375b0371c447
+Step #0 - "Rodando docker-compose":  ---> 1bb5e449f90f
+Step #0 - "Rodando docker-compose": Successfully built 1bb5e449f90f
+Step #0 - "Rodando docker-compose": Successfully tagged code-micro-videos_app:latest
+Step #0 - "Rodando docker-compose": Image for service app was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+Step #0 - "Rodando docker-compose": Building nginx
+Step #0 - "Rodando docker-compose": Sending build context to Docker daemon  3.584kB
+Step #0 - "Rodando docker-compose":
+Step #0 - "Rodando docker-compose": Step 1/3 : FROM nginx:1.15.0-alpine
+Step #0 - "Rodando docker-compose": 1.15.0-alpine: Pulling from library/nginx
+Step #0 - "Rodando docker-compose": ff3a5c916c92: Pulling fs layer
+Step #0 - "Rodando docker-compose": d81b148fab7c: Pulling fs layer
+Step #0 - "Rodando docker-compose": f9fe12447daf: Pulling fs layer
+Step #0 - "Rodando docker-compose": ad017fd52da2: Pulling fs layer
+Step #0 - "Rodando docker-compose": ad017fd52da2: Waiting
+Step #0 - "Rodando docker-compose": f9fe12447daf: Verifying Checksum
+Step #0 - "Rodando docker-compose": f9fe12447daf: Download complete
+Step #0 - "Rodando docker-compose": ff3a5c916c92: Verifying Checksum
+Step #0 - "Rodando docker-compose": ff3a5c916c92: Download complete
+Step #0 - "Rodando docker-compose": d81b148fab7c: Verifying Checksum
+Step #0 - "Rodando docker-compose": d81b148fab7c: Download complete
+Step #0 - "Rodando docker-compose": ad017fd52da2: Verifying Checksum
+Step #0 - "Rodando docker-compose": ad017fd52da2: Download complete
+Step #0 - "Rodando docker-compose": ff3a5c916c92: Pull complete
+Step #0 - "Rodando docker-compose": d81b148fab7c: Pull complete
+Step #0 - "Rodando docker-compose": f9fe12447daf: Pull complete
+Step #0 - "Rodando docker-compose": ad017fd52da2: Pull complete
+Step #0 - "Rodando docker-compose": Digest: sha256:4a85273d1e403fbf676960c0ad41b673c7b034204a48cb32779fbb2c18e3839d
+Step #0 - "Rodando docker-compose": Status: Downloaded newer image for nginx:1.15.0-alpine
+Step #0 - "Rodando docker-compose":  ---> bc7fdec94612
+Step #0 - "Rodando docker-compose": Step 2/3 : RUN rm /etc/nginx/conf.d/default.conf
+Step #0 - "Rodando docker-compose":  ---> Running in 3413255575e0
+Step #0 - "Rodando docker-compose": Removing intermediate container 3413255575e0
+Step #0 - "Rodando docker-compose":  ---> a43890f68c55
+Step #0 - "Rodando docker-compose": Step 3/3 : COPY ./nginx.conf /etc/nginx/conf.d
+Step #0 - "Rodando docker-compose":  ---> 58f47f12772a
+Step #0 - "Rodando docker-compose": Successfully built 58f47f12772a
+Step #0 - "Rodando docker-compose": Successfully tagged code-micro-videos_nginx:latest
+Step #0 - "Rodando docker-compose": Image for service nginx was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+Step #0 - "Rodando docker-compose": Creating micro-videos-redis ...
+Step #0 - "Rodando docker-compose": Creating micro-videos-db    ...
+Step #0 - "Rodando docker-compose": Creating micro-videos-redis ... done
+Step #0 - "Rodando docker-compose": Creating micro-videos-db    ... done
+Step #0 - "Rodando docker-compose": Creating micro-videos-app   ...
+Step #0 - "Rodando docker-compose": Creating micro-videos-app   ... done
+Step #0 - "Rodando docker-compose": Creating micro-videos-nginx ...
+Step #0 - "Rodando docker-compose": Creating micro-videos-nginx ... done
+Finished Step #0 - "Rodando docker-compose"
+Starting Step #1 - "Chown in /var/www"
+Step #1 - "Chown in /var/www": Already have image (with digest): gcr.io/cloud-builders/docker
+Finished Step #1 - "Chown in /var/www"
+Starting Step #2 - "Rodando composer"
+Step #2 - "Rodando composer": Already have image (with digest): gcr.io/cloud-builders/docker
+Step #2 - "Rodando composer": [32mInstalling dependencies from lock file (including require-dev)[39m
+Step #2 - "Rodando composer": [32mVerifying lock file contents can be installed on current platform.[39m
+Step #2 - "Rodando composer": [32mPackage operations: 107 installs, 0 updates, 0 removals[39m
+Step #2 - "Rodando composer":   - Downloading [32mphpdocumentor/reflection-common[39m ([33m2.2.0[39m)
+Step #2 - "Rodando composer":   - Downloading [32mphpdocumentor/type-resolver[39m ([33m1.4.0[39m)
+Step #2 - "Rodando composer":   - Downloading [32msymfony/polyfill-ctype[39m ([33mv1.22.1[39m)
+Step #2 - "Rodando composer":   - Downloading [32mphpoption/phpoption[39m ([33m1.7.5[39m)
+Step #2 - "Rodando composer":   - Downloading [32mvlucas/phpdotenv[39m ([33mv3.6.8[39m)
+Step #2 - "Rodando composer":   - Downloading [32msymfony/css-selector[39m ([33mv5.2.4[39m)
+Step #2 - "Rodando composer":   - Downloading [32mtijsverkoyen/css-to-inline-styles[39m ([33m2.2.3[39m)
+Step #2 - "Rodando composer":   - Downloading [32msymfony/polyfill-php80[39m ([33mv1.22.1[39m)
+Step #2 - "Rodando composer":   - Downloading [32msymfony/polyfill-php72[39m ([33mv1.22.1[39m)
+Step #2 - "Rodando composer":   - Downloading [32msymfony/polyfill-mbstring[39m ([33mv1.22.1[39m)
+Step #2 - "Rodando composer":   - Downloading [32msymfony/var-dumper[39m ([33mv4.4.20[39m)
+Step #2 - "Rodando composer":   - Downloading [32msymfony/routing[39m ([33mv4.4.20[39m)
+Step #2 - "Rodando composer":   - Downloading [32msymfony/process[39m ([33mv4.4.20[39m)
+Step #2 - "Rodando composer":   - Downloading [32msymfony/polyfill-php73[39m ([33mv1.22.1[39m)
+Step #2 - "Rodando composer":   - Downloading [32msymfony/polyfill-intl-normalizer[39m ([33mv1.22.1[39m)
+Step #2 - "Rodando composer":   - Downloading [32msymfony/polyfill-intl-idn[39m ([33mv1.22.1[39m)
+Step #2 - "Rodando composer":   - Downloading [32msymfony/deprecation-contracts[39m ([33mv2.2.0[39m)
+Step #2 - "Rodando composer":   - Downloading [32msymfony/mime[39m ([33mv5.2.5[39m)
+Step #2 - "Rodando composer":   - Downloading [32msymfony/http-foundation[39m ([33mv4.4.20[39m)
+Step #2 - "Rodando composer":   - Downloading [32msymfony/http-client-contracts[39m ([33mv2.3.1[39m)
+Step #2 - "Rodando composer":   - Downloading [32msymfony/event-dispatcher-contracts[39m ([33mv1.1.9[39m)
+Step #2 - "Rodando composer":   - Downloading [32msymfony/event-dispatcher[39m ([33mv4.4.20[39m)
+Step #2 - "Rodando composer":   - Downloading [32mpsr/log[39m ([33m1.1.3[39m)
+Step #2 - "Rodando composer":   - Downloading [32msymfony/debug[39m ([33mv4.4.20[39m)
+Step #2 - "Rodando composer":   - Downloading [32msymfony/error-handler[39m ([33mv4.4.20[39m)
+Step #2 - "Rodando composer":   - Downloading [32msymfony/http-kernel[39m ([33mv4.4.20[39m)
+Step #2 - "Rodando composer":   - Downloading [32msymfony/finder[39m ([33mv4.4.20[39m)
+Step #2 - "Rodando composer":   - Downloading [32mpsr/container[39m ([33m1.1.1[39m)
+Step #2 - "Rodando composer":   - Downloading [32msymfony/service-contracts[39m ([33mv2.2.0[39m)
+Step #2 - "Rodando composer":   - Downloading [32msymfony/console[39m ([33mv4.4.20[39m)
+Step #2 - "Rodando composer":   - Downloading [32msymfony/polyfill-iconv[39m ([33mv1.22.1[39m)
+Step #2 - "Rodando composer":   - Downloading [32mdoctrine/lexer[39m ([33m1.2.1[39m)
+Step #2 - "Rodando composer":   - Downloading [32megulias/email-validator[39m ([33m2.1.25[39m)
+Step #2 - "Rodando composer":   - Downloading [32mswiftmailer/swiftmailer[39m ([33mv6.2.7[39m)
+Step #2 - "Rodando composer":   - Downloading [32mparagonie/random_compat[39m ([33mv9.99.99[39m)
+Step #2 - "Rodando composer":   - Downloading [32mramsey/uuid[39m ([33m3.9.3[39m)
+Step #2 - "Rodando composer":   - Downloading [32mpsr/simple-cache[39m ([33m1.0.1[39m)
+Step #2 - "Rodando composer":   - Downloading [32mopis/closure[39m ([33m3.6.1[39m)
+Step #2 - "Rodando composer":   - Downloading [32msymfony/translation-contracts[39m ([33mv2.3.0[39m)
+Step #2 - "Rodando composer":   - Downloading [32msymfony/translation[39m ([33mv4.4.20[39m)
+Step #2 - "Rodando composer":   - Downloading [32mnesbot/carbon[39m ([33m2.46.0[39m)
+Step #2 - "Rodando composer":   - Downloading [32mmonolog/monolog[39m ([33m2.2.0[39m)
+Step #2 - "Rodando composer":   - Downloading [32mleague/mime-type-detection[39m ([33m1.7.0[39m)
+Step #2 - "Rodando composer":   - Downloading [32mleague/flysystem[39m ([33m1.1.3[39m)
+Step #2 - "Rodando composer":   - Downloading [32mleague/commonmark[39m ([33m1.5.7[39m)
+Step #2 - "Rodando composer":   - Downloading [32mdragonmantank/cron-expression[39m ([33mv2.3.1[39m)
+Step #2 - "Rodando composer":   - Downloading [32mdoctrine/inflector[39m ([33m2.0.3[39m)
+Step #2 - "Rodando composer":   - Downloading [32mlaravel/framework[39m ([33mv6.20.18[39m)
+Step #2 - "Rodando composer":   - Downloading [32mdoctrine/event-manager[39m ([33m1.1.1[39m)
+Step #2 - "Rodando composer":   - Downloading [32mdoctrine/cache[39m ([33m1.10.2[39m)
+Step #2 - "Rodando composer":   - Downloading [32mdoctrine/dbal[39m ([33m2.12.1[39m)
+Step #2 - "Rodando composer":   - Downloading [32msymfony/filesystem[39m ([33mv5.2.4[39m)
+Step #2 - "Rodando composer":   - Downloading [32mseld/phar-utils[39m ([33m1.1.1[39m)
+Step #2 - "Rodando composer":   - Downloading [32mseld/jsonlint[39m ([33m1.8.3[39m)
+Step #2 - "Rodando composer":   - Downloading [32mreact/promise[39m ([33mv2.8.0[39m)
+Step #2 - "Rodando composer":   - Downloading [32mjustinrainbow/json-schema[39m ([33m5.2.10[39m)
+Step #2 - "Rodando composer":   - Downloading [32mcomposer/xdebug-handler[39m ([33m1.4.5[39m)
+Step #2 - "Rodando composer":   - Downloading [32mcomposer/spdx-licenses[39m ([33m1.5.5[39m)
+Step #2 - "Rodando composer":   - Downloading [32mcomposer/semver[39m ([33m3.2.4[39m)
+Step #2 - "Rodando composer":   - Downloading [32mcomposer/ca-bundle[39m ([33m1.2.9[39m)
+Step #2 - "Rodando composer":   - Downloading [32mcomposer/composer[39m ([33m2.0.11[39m)
+Step #2 - "Rodando composer":   - Downloading [32mbarryvdh/reflection-docblock[39m ([33mv2.0.6[39m)
+Step #2 - "Rodando composer":   - Downloading [32mbarryvdh/laravel-ide-helper[39m ([33mv2.8.2[39m)
+Step #2 - "Rodando composer":   - Downloading [32mbeyondcode/laravel-dump-server[39m ([33m1.3.0[39m)
+Step #2 - "Rodando composer":   - Downloading [32mscrivo/highlight.php[39m ([33mv9.18.1.6[39m)
+Step #2 - "Rodando composer":   - Downloading [32mfilp/whoops[39m ([33m2.9.2[39m)
+Step #2 - "Rodando composer":   - Downloading [32mfacade/ignition-contracts[39m ([33m1.0.2[39m)
+Step #2 - "Rodando composer":   - Downloading [32mfacade/flare-client-php[39m ([33m1.4.0[39m)
+Step #2 - "Rodando composer":   - Downloading [32mfacade/ignition[39m ([33m1.16.15[39m)
+Step #2 - "Rodando composer":   - Downloading [32mfideloper/proxy[39m ([33m4.4.1[39m)
+Step #2 - "Rodando composer":   - Downloading [32mfzaninotto/faker[39m ([33mv1.9.2[39m)
+Step #2 - "Rodando composer":   - Downloading [32mnikic/php-parser[39m ([33mv4.10.4[39m)
+Step #2 - "Rodando composer":   - Downloading [32mphp-parallel-lint/php-console-color[39m ([33mv0.3[39m)
+Step #2 - "Rodando composer":   - Downloading [32mphp-parallel-lint/php-console-highlighter[39m ([33mv0.5[39m)
+Step #2 - "Rodando composer":   - Downloading [32mdnoegel/php-xdg-base-dir[39m ([33mv0.1.1[39m)
+Step #2 - "Rodando composer":   - Downloading [32mpsy/psysh[39m ([33mv0.9.12[39m)
+Step #2 - "Rodando composer":   - Downloading [32mlaravel/tinker[39m ([33mv1.0.10[39m)
+Step #2 - "Rodando composer":   - Downloading [32mlaravel/ui[39m ([33mv1.3.0[39m)
+Step #2 - "Rodando composer":   - Downloading [32mhamcrest/hamcrest-php[39m ([33mv2.0.1[39m)
+Step #2 - "Rodando composer":   - Downloading [32mmockery/mockery[39m ([33m1.4.3[39m)
+Step #2 - "Rodando composer":   - Downloading [32mnunomaduro/collision[39m ([33mv3.2.0[39m)
+Step #2 - "Rodando composer":   - Downloading [32mwebmozart/assert[39m ([33m1.10.0[39m)
+Step #2 - "Rodando composer":   - Downloading [32mphpdocumentor/reflection-docblock[39m ([33m5.2.2[39m)
+Step #2 - "Rodando composer":   - Downloading [32mphpunit/php-token-stream[39m ([33m4.0.4[39m)
+Step #2 - "Rodando composer":   - Downloading [32msebastian/version[39m ([33m2.0.1[39m)
+Step #2 - "Rodando composer":   - Downloading [32msebastian/type[39m ([33m1.1.4[39m)
+Step #2 - "Rodando composer":   - Downloading [32msebastian/resource-operations[39m ([33m2.0.2[39m)
+Step #2 - "Rodando composer":   - Downloading [32msebastian/recursion-context[39m ([33m3.0.1[39m)
+Step #2 - "Rodando composer":   - Downloading [32msebastian/object-reflector[39m ([33m1.1.2[39m)
+Step #2 - "Rodando composer":   - Downloading [32msebastian/object-enumerator[39m ([33m3.0.4[39m)
+Step #2 - "Rodando composer":   - Downloading [32msebastian/global-state[39m ([33m3.0.1[39m)
+Step #2 - "Rodando composer":   - Downloading [32msebastian/exporter[39m ([33m3.1.3[39m)
+Step #2 - "Rodando composer":   - Downloading [32msebastian/environment[39m ([33m4.2.4[39m)
+Step #2 - "Rodando composer":   - Downloading [32msebastian/diff[39m ([33m3.0.3[39m)
+Step #2 - "Rodando composer":   - Downloading [32msebastian/comparator[39m ([33m3.0.3[39m)
+Step #2 - "Rodando composer":   - Downloading [32mphpunit/php-timer[39m ([33m2.1.3[39m)
+Step #2 - "Rodando composer":   - Downloading [32mphpunit/php-text-template[39m ([33m1.2.1[39m)
+Step #2 - "Rodando composer":   - Downloading [32mphpunit/php-file-iterator[39m ([33m2.0.3[39m)
+Step #2 - "Rodando composer":   - Downloading [32mtheseer/tokenizer[39m ([33m1.2.0[39m)
+Step #2 - "Rodando composer":   - Downloading [32msebastian/code-unit-reverse-lookup[39m ([33m1.0.2[39m)
+Step #2 - "Rodando composer":   - Downloading [32mphpunit/php-code-coverage[39m ([33m7.0.14[39m)
+Step #2 - "Rodando composer":   - Downloading [32mdoctrine/instantiator[39m ([33m1.4.0[39m)
+Step #2 - "Rodando composer":   - Downloading [32mphpspec/prophecy[39m ([33m1.12.2[39m)
+Step #2 - "Rodando composer":   - Downloading [32mphar-io/version[39m ([33m3.1.0[39m)
+Step #2 - "Rodando composer":   - Downloading [32mphar-io/manifest[39m ([33m2.0.1[39m)
+Step #2 - "Rodando composer":   - Downloading [32mmyclabs/deep-copy[39m ([33m1.10.2[39m)
+Step #2 - "Rodando composer":   - Downloading [32mphpunit/phpunit[39m ([33m8.5.14[39m)
+Step #2 - "Rodando composer":    0/107 [>---------------------------]   0%
+[2K   6/107 [=>--------------------------]   5%
+[2K  16/107 [====>-----------------------]  14%
+[2K  23/107 [======>---------------------]  21%
+[2K  33/107 [========>-------------------]  30%
+[2K  45/107 [===========>----------------]  42%
+[2K  56/107 [==============>-------------]  52%
+[2K  59/107 [===============>------------]  55%
+[2K  63/107 [================>-----------]  58%
+[2K  74/107 [===================>--------]  69%
+[2K  93/107 [========================>---]  86%
+[2K 104/107 [===========================>]  97%
+[2K 106/107 [===========================>]  99%
+[2K 107/107 [============================] 100%
+[2K  - Installing [32mphpdocumentor/reflection-common[39m ([33m2.2.0[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mphpdocumentor/type-resolver[39m ([33m1.4.0[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msymfony/polyfill-ctype[39m ([33mv1.22.1[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mphpoption/phpoption[39m ([33m1.7.5[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mvlucas/phpdotenv[39m ([33mv3.6.8[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msymfony/css-selector[39m ([33mv5.2.4[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mtijsverkoyen/css-to-inline-styles[39m ([33m2.2.3[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msymfony/polyfill-php80[39m ([33mv1.22.1[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msymfony/polyfill-php72[39m ([33mv1.22.1[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msymfony/polyfill-mbstring[39m ([33mv1.22.1[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msymfony/var-dumper[39m ([33mv4.4.20[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msymfony/routing[39m ([33mv4.4.20[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msymfony/process[39m ([33mv4.4.20[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msymfony/polyfill-php73[39m ([33mv1.22.1[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msymfony/polyfill-intl-normalizer[39m ([33mv1.22.1[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msymfony/polyfill-intl-idn[39m ([33mv1.22.1[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msymfony/deprecation-contracts[39m ([33mv2.2.0[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msymfony/mime[39m ([33mv5.2.5[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msymfony/http-foundation[39m ([33mv4.4.20[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msymfony/http-client-contracts[39m ([33mv2.3.1[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msymfony/event-dispatcher-contracts[39m ([33mv1.1.9[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msymfony/event-dispatcher[39m ([33mv4.4.20[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mpsr/log[39m ([33m1.1.3[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msymfony/debug[39m ([33mv4.4.20[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msymfony/error-handler[39m ([33mv4.4.20[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msymfony/http-kernel[39m ([33mv4.4.20[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msymfony/finder[39m ([33mv4.4.20[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mpsr/container[39m ([33m1.1.1[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msymfony/service-contracts[39m ([33mv2.2.0[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msymfony/console[39m ([33mv4.4.20[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msymfony/polyfill-iconv[39m ([33mv1.22.1[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mdoctrine/lexer[39m ([33m1.2.1[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32megulias/email-validator[39m ([33m2.1.25[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mswiftmailer/swiftmailer[39m ([33mv6.2.7[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mparagonie/random_compat[39m ([33mv9.99.99[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mramsey/uuid[39m ([33m3.9.3[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mpsr/simple-cache[39m ([33m1.0.1[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mopis/closure[39m ([33m3.6.1[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msymfony/translation-contracts[39m ([33mv2.3.0[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msymfony/translation[39m ([33mv4.4.20[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mnesbot/carbon[39m ([33m2.46.0[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mmonolog/monolog[39m ([33m2.2.0[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mleague/mime-type-detection[39m ([33m1.7.0[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mleague/flysystem[39m ([33m1.1.3[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mleague/commonmark[39m ([33m1.5.7[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mdragonmantank/cron-expression[39m ([33mv2.3.1[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mdoctrine/inflector[39m ([33m2.0.3[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mlaravel/framework[39m ([33mv6.20.18[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mdoctrine/event-manager[39m ([33m1.1.1[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mdoctrine/cache[39m ([33m1.10.2[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mdoctrine/dbal[39m ([33m2.12.1[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msymfony/filesystem[39m ([33mv5.2.4[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mseld/phar-utils[39m ([33m1.1.1[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mseld/jsonlint[39m ([33m1.8.3[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mreact/promise[39m ([33mv2.8.0[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mjustinrainbow/json-schema[39m ([33m5.2.10[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mcomposer/xdebug-handler[39m ([33m1.4.5[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mcomposer/spdx-licenses[39m ([33m1.5.5[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mcomposer/semver[39m ([33m3.2.4[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mcomposer/ca-bundle[39m ([33m1.2.9[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mcomposer/composer[39m ([33m2.0.11[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mbarryvdh/reflection-docblock[39m ([33mv2.0.6[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mbarryvdh/laravel-ide-helper[39m ([33mv2.8.2[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mbeyondcode/laravel-dump-server[39m ([33m1.3.0[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mscrivo/highlight.php[39m ([33mv9.18.1.6[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mfilp/whoops[39m ([33m2.9.2[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mfacade/ignition-contracts[39m ([33m1.0.2[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mfacade/flare-client-php[39m ([33m1.4.0[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mfacade/ignition[39m ([33m1.16.15[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mfideloper/proxy[39m ([33m4.4.1[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mfzaninotto/faker[39m ([33mv1.9.2[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mnikic/php-parser[39m ([33mv4.10.4[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mphp-parallel-lint/php-console-color[39m ([33mv0.3[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mphp-parallel-lint/php-console-highlighter[39m ([33mv0.5[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mdnoegel/php-xdg-base-dir[39m ([33mv0.1.1[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mpsy/psysh[39m ([33mv0.9.12[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mlaravel/tinker[39m ([33mv1.0.10[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mlaravel/ui[39m ([33mv1.3.0[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mhamcrest/hamcrest-php[39m ([33mv2.0.1[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mmockery/mockery[39m ([33m1.4.3[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mnunomaduro/collision[39m ([33mv3.2.0[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mwebmozart/assert[39m ([33m1.10.0[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mphpdocumentor/reflection-docblock[39m ([33m5.2.2[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mphpunit/php-token-stream[39m ([33m4.0.4[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msebastian/version[39m ([33m2.0.1[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msebastian/type[39m ([33m1.1.4[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msebastian/resource-operations[39m ([33m2.0.2[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msebastian/recursion-context[39m ([33m3.0.1[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msebastian/object-reflector[39m ([33m1.1.2[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msebastian/object-enumerator[39m ([33m3.0.4[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msebastian/global-state[39m ([33m3.0.1[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msebastian/exporter[39m ([33m3.1.3[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msebastian/environment[39m ([33m4.2.4[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msebastian/diff[39m ([33m3.0.3[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msebastian/comparator[39m ([33m3.0.3[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mphpunit/php-timer[39m ([33m2.1.3[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mphpunit/php-text-template[39m ([33m1.2.1[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mphpunit/php-file-iterator[39m ([33m2.0.3[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mtheseer/tokenizer[39m ([33m1.2.0[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32msebastian/code-unit-reverse-lookup[39m ([33m1.0.2[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mphpunit/php-code-coverage[39m ([33m7.0.14[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mdoctrine/instantiator[39m ([33m1.4.0[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mphpspec/prophecy[39m ([33m1.12.2[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mphar-io/version[39m ([33m3.1.0[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mphar-io/manifest[39m ([33m2.0.1[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mmyclabs/deep-copy[39m ([33m1.10.2[39m): Extracting archive
+Step #2 - "Rodando composer":   - Installing [32mphpunit/phpunit[39m ([33m8.5.14[39m): Extracting archive
+Step #2 - "Rodando composer":   0/97 [>---------------------------]   0%
+[2K  7/97 [==>-------------------------]   7%
+[2K 17/97 [====>-----------------------]  17%
+[2K 27/97 [=======>--------------------]  27%
+[2K 36/97 [==========>-----------------]  37%
+[2K 44/97 [============>---------------]  45%
+[2K 52/97 [===============>------------]  53%
+[2K 60/97 [=================>----------]  61%
+[2K 69/97 [===================>--------]  71%
+[2K 79/97 [======================>-----]  81%
+[2K 89/97 [=========================>--]  91%
+[2K 96/97 [===========================>]  98%
+[2K 97/97 [============================] 100%
+[2K[30;43mPackage fzaninotto/faker is abandoned, you should avoid using it. No replacement was suggested.[39;49m
+Step #2 - "Rodando composer": [30;43mPackage phpunit/php-token-stream is abandoned, you should avoid using it. No replacement was suggested.[39;49m
+Step #2 - "Rodando composer": [32mGenerating optimized autoload files[39m
+Step #2 - "Rodando composer": > Illuminate\Foundation\ComposerScripts::postAutoloadDump
+Step #2 - "Rodando composer": > @php artisan package:discover --ansi
+Step #2 - "Rodando composer": Discovered Package: [32mbarryvdh/laravel-ide-helper[39m
+Step #2 - "Rodando composer": Discovered Package: [32mbeyondcode/laravel-dump-server[39m
+Step #2 - "Rodando composer": Discovered Package: [32mfacade/ignition[39m
+Step #2 - "Rodando composer": Discovered Package: [32mfideloper/proxy[39m
+Step #2 - "Rodando composer": Discovered Package: [32mlaravel/tinker[39m
+Step #2 - "Rodando composer": Discovered Package: [32mlaravel/ui[39m
+Step #2 - "Rodando composer": Discovered Package: [32mnesbot/carbon[39m
+Step #2 - "Rodando composer": Discovered Package: [32mnunomaduro/collision[39m
+Step #2 - "Rodando composer": [32mPackage manifest generated successfully.[39m
+Step #2 - "Rodando composer": > @php artisan ide-helper:generate
+Step #2 - "Rodando composer": Exception: No application encryption key has been specified.
+Step #2 - "Rodando composer": Skipping \Illuminate\Support\Facades\Crypt.
+
+Step #2 - "Rodando composer": Exception: No application encryption key has been specified.
+Step #2 - "Rodando composer": Skipping \Illuminate\Support\Facades\Crypt.
+
+Step #2 - "Rodando composer": [32mA new helper file was written to _ide_helper.php[39m
+Step #2 - "Rodando composer": > @php artisan ide-helper:meta
+Step #2 - "Rodando composer": [32mA new meta file was written to .phpstorm.meta.php[39m
+Step #2 - "Rodando composer": [32m72 packages you are using are looking for funding.[39m
+Step #2 - "Rodando composer": [32mUse the `composer fund` command to find out more![39m
+Finished Step #2 - "Rodando composer"
+Starting Step #3 - "Compiando .env"
+Step #3 - "Compiando .env": Already have image (with digest): gcr.io/cloud-builders/docker
+Finished Step #3 - "Compiando .env"
+Starting Step #4 - "Compiando .env.testing"
+Step #4 - "Compiando .env.testing": Already have image (with digest): gcr.io/cloud-builders/docker
+Finished Step #4 - "Compiando .env.testing"
+Starting Step #5 - "Rodando key:generate"
+Step #5 - "Rodando key:generate": Already have image (with digest): gcr.io/cloud-builders/docker
+Step #5 - "Rodando key:generate": [32mApplication key set successfully.[39m
+Finished Step #5 - "Rodando key:generate"
+Starting Step #6 - "Rodando migrations"
+Step #6 - "Rodando migrations": Already have image (with digest): gcr.io/cloud-builders/docker
+Step #6 - "Rodando migrations": [32mMigration table created successfully.[39m
+Step #6 - "Rodando migrations": [33mMigrating:[39m 2014_10_12_000000_create_users_table
+Step #6 - "Rodando migrations": [32mMigrated:[39m  2014_10_12_000000_create_users_table (0.04 seconds)
+Step #6 - "Rodando migrations": [33mMigrating:[39m 2014_10_12_100000_create_password_resets_table
+Step #6 - "Rodando migrations": [32mMigrated:[39m  2014_10_12_100000_create_password_resets_table (0.04 seconds)
+Step #6 - "Rodando migrations": [33mMigrating:[39m 2019_08_19_000000_create_failed_jobs_table
+Step #6 - "Rodando migrations": [32mMigrated:[39m  2019_08_19_000000_create_failed_jobs_table (0.02 seconds)
+Step #6 - "Rodando migrations": [33mMigrating:[39m 2021_03_15_221554_create_categories_table
+Step #6 - "Rodando migrations": [32mMigrated:[39m  2021_03_15_221554_create_categories_table (0.05 seconds)
+Step #6 - "Rodando migrations": [33mMigrating:[39m 2021_03_21_174402_create_genres_table
+Step #6 - "Rodando migrations": [32mMigrated:[39m  2021_03_21_174402_create_genres_table (0.05 seconds)
+Step #6 - "Rodando migrations": [33mMigrating:[39m 2021_04_10_000000_create_cast_members_table
+Step #6 - "Rodando migrations": [32mMigrated:[39m  2021_04_10_000000_create_cast_members_table (0.05 seconds)
+Step #6 - "Rodando migrations": [33mMigrating:[39m 2021_04_10_100000_create_videos_table
+Step #6 - "Rodando migrations": [32mMigrated:[39m  2021_04_10_100000_create_videos_table (0.05 seconds)
+Step #6 - "Rodando migrations": [33mMigrating:[39m 2021_04_11_135556_create_category_video_table
+Step #6 - "Rodando migrations": [32mMigrated:[39m  2021_04_11_135556_create_category_video_table (0.19 seconds)
+Step #6 - "Rodando migrations": [33mMigrating:[39m 2021_04_11_140042_create_genre_video_table
+Step #6 - "Rodando migrations": [32mMigrated:[39m  2021_04_11_140042_create_genre_video_table (0.17 seconds)
+Step #6 - "Rodando migrations": [33mMigrating:[39m 2021_04_12_142923_create_category_genre_table
+Step #6 - "Rodando migrations": [32mMigrated:[39m  2021_04_12_142923_create_category_genre_table (0.16 seconds)
+Finished Step #6 - "Rodando migrations"
+Starting Step #7 - "Rodando phpunit"
+Step #7 - "Rodando phpunit": Already have image (with digest): gcr.io/cloud-builders/docker
+Step #7 - "Rodando phpunit": stty: standard input
+Step #7 - "Rodando phpunit": PHPUnit 8.5.14 by Sebastian Bergmann and contributors.
+Step #7 - "Rodando phpunit":
+Step #7 - "Rodando phpunit": ................................................................. 65 / 96 ( 67%)
+Step #7 - "Rodando phpunit": ...............................                                   96 / 96 (100%)
+Step #7 - "Rodando phpunit":
+Step #7 - "Rodando phpunit": Time: 1.13 minutes, Memory: 38.00 MB
+Step #7 - "Rodando phpunit":
+Step #7 - "Rodando phpunit": [30;42mOK (96 tests, 585 assertions)[0m
+Finished Step #7 - "Rodando phpunit"
+PUSH
+DONE
