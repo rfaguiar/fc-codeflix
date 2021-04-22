@@ -27,6 +27,11 @@ trait UploadFiles
         });
     }
 
+    public function relativeFilePath($value): string
+    {
+        return "{$this->uploadDir()}/{$value}";
+    }
+
     /**
      * @param UploadedFile[] $files
      */
@@ -63,7 +68,7 @@ trait UploadFiles
         \Storage::delete("{$this->uploadDir()}/{$fileName}");
     }
 
-    public static function extractFiles(array &$attributes = [])
+    public static function extractFiles(array &$attributes = []): array
     {
         $files = [];
         foreach (self::$fileFields as $file) {
@@ -73,6 +78,11 @@ trait UploadFiles
             }
         }
         return $files;
+    }
+
+    protected function getFileUrl($fileName): string
+    {
+        return \Storage::url($this->relativeFilePath($fileName));
     }
 
 }
