@@ -54,3 +54,9 @@ gcloud-encrypt-service-account:
 	--location=global \
 	--keyring=testing-build \
 	--key=service-account;
+
+create-category-resource:
+	php artisan make:resource CategoryResource;
+
+create-category-collection-resource:
+	php artisan make:resource CategoryCollection --collection;
