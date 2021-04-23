@@ -2,6 +2,7 @@ import * as React from 'react';
 import {AppBar, Button, IconButton, makeStyles, Menu, MenuItem, Theme, Toolbar, Typography} from "@material-ui/core";
 import logo from '../../static/img/logo.png';
 import MenuIcon from '@material-ui/icons/Menu';
+import {useState} from "react";
 
 const useStyles = makeStyles((theme: Theme) => ({
     toolbar: {
@@ -21,6 +22,12 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 export const Navbar: React.FC = () => {
     const classes = useStyles();
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
+
+    const handleOpen = (event:any) => setAnchorEl(event.currentTarget);
+    const handleClose = () => setAnchorEl(null);
+
     return (
         <AppBar>
             <Toolbar className={classes.toolbar}>
@@ -30,17 +37,23 @@ export const Navbar: React.FC = () => {
                     aria-label="open drawer"
                     aria-controls="menu-appbar"
                     aria-haspopup="true"
+                    onClick={handleOpen}
                 >
                     <MenuIcon/>
                 </IconButton>
                 <Menu
                     id="menu-appbar"
-                    open={false}
+                    open={open}
+                    anchorEl={anchorEl}
+                    onClose={handleClose}
+                    anchorOrigin={{vertical: 'bottom', horizontal: 'center'}}
+                    transformOrigin={{vertical: 'top', horizontal: 'center'}}
+                    getContentAnchorEl={null}
                 >
-                    <MenuItem>
+                    <MenuItem onClick={handleClose}>
                         Categorias
                     </MenuItem>
-                    <MenuItem>
+                    <MenuItem onClick={handleClose}>
                         Generos
                     </MenuItem>
                 </Menu>
