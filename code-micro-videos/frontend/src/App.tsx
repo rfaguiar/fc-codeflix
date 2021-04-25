@@ -8,11 +8,11 @@ function App() {
   return (
       <>
         <Navbar/>
-          <Box paddingTop={'70px'}>
-              <Page title={'Categorias'}>
-                Conteudo
-              </Page>
-          </Box>
+        <Box paddingTop={'70px'}>
+          <Page title={'Categorias'}>
+            Conteudo
+          </Page>
+        </Box>
       </>
   );
 }
