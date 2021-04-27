@@ -129,7 +129,7 @@ class VideoUploadTest extends BaseVideoTestCase
         $video = factory(Video::class)->create();
         foreach (Video::$fileFields as $field) {
             $fileUrl = $video->{"{$field}_url"};
-            $this->assertNull($fileUrl);
+            $this->assertNotNull($fileUrl);
         }
     }
 }
