@@ -54,3 +54,11 @@ gcloud-encrypt-service-account:
 	--location=global \
 	--keyring=testing-build \
 	--key=service-account;
+
+gcloud-decrypt-service-account:
+	gcloud kms decrypt \
+ 	--ciphertext-file=./storage/credentials/google/service-account-storage.json.enc \
+	--plaintext-file=./storage/credentials/google/service-account-storage.json \
+	--location=global \
+	--keyring=testing-build \
+	--key=service-account;
