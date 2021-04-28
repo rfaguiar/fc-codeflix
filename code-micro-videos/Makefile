@@ -46,3 +46,26 @@ run-docker-optmized:
 
 bash-docker-optmized:
 	docker exec -it app-optmized bash;
+
+gcloud-encrypt-service-account:
+	gcloud kms encrypt \
+ 	--ciphertext-file=./storage/credentials/google/service-account-storage.json.enc \
+	--plaintext-file=./storage/credentials/google/service-account-storage.json \
+	--location=global \
+	--keyring=testing-build \
+	--key=service-account;
+
+gcloud-decrypt-service-account:
+	gcloud kms decrypt \
+ 	--ciphertext-file=./storage/credentials/google/service-account-storage.json.enc \
+	--plaintext-file=./storage/credentials/google/service-account-storage.json \
+	--location=global \
+	--keyring=testing-build \
+	--key=service-account;
+
+create-category-resource:
+	php artisan make:resource CategoryResource;
+
+create-category-collection-resource:
+	php artisan make:resource CategoryCollection --collection;
+

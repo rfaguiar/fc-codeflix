@@ -12,13 +12,22 @@ class Video extends Model
 
     const RATING_LIST = ['L', '10', '12', '14', '16', '18'];
 
+    const THUMB_FILE_MAX_SIZE = 1024 * 5;
+    const BANNER_FILE_MAX_SIZE = 1024 * 10;
+    const TRAILER_FILE_MAX_SIZE = 1024 * 1024 * 1;
+    const VIDEO_FILE_MAX_SIZE = 1024 * 1024 * 50;
+
     protected $fillable = [
         'title',
         'description',
         'year_launched',
         'opened',
         'rating',
-        'duration'
+        'duration',
+        'video_file',
+        'thumb_file',
+        'banner_file',
+        'trailer_file'
     ];
     protected $dates = ['deleted_at'];
     protected $casts = [
@@ -28,7 +37,8 @@ class Video extends Model
         'duration' => 'integer'
     ];
     public $incrementing = false;
-    public static $fileFields = ['video_file'];
+    protected $hidden = ['video_file', 'thumb_file', 'banner_file', 'trailer_file'];
+    public static $fileFields = ['video_file', 'thumb_file', 'banner_file', 'trailer_file'];
 
     public static function create(array $attributes = [])
     {
@@ -43,7 +53,7 @@ class Video extends Model
             return $obj;
         } catch (\Exception $e) {
             if (isset($obj)) {
-                //TODO excluir arquivos de uploads
+                $obj->deleteFiles($files);
             }
             \DB::rollBack();
             throw $e;
@@ -59,12 +69,14 @@ class Video extends Model
             static::handleRelations($this, $attributes);
             if ($saved) {
                 $this->uploadFiles($files);
-                //TODO excluir os antigos
             }
             \DB::commit();
+            if ($saved && count($files)) {
+                $this->deleteOldFiles();
+            }
             return $saved;
         } catch (\Exception $e) {
-            //TODO excluir arquivos de uploads
+            $this->deleteFiles($files);
             \DB::rollBack();
             throw $e;
         }
@@ -93,5 +105,25 @@ class Video extends Model
     protected function uploadDir()
     {
         return $this->id;
+    }
+
+    public function getThumbFileUrlAttribute(): ?string
+    {
+        return $this->thumb_file ? $this->getFileUrl($this->thumb_file) : null;
+    }
+
+    public function getBannerFileUrlAttribute(): ?string
+    {
+        return $this->banner_file ? $this->getFileUrl($this->banner_file) : null;
+    }
+
+    public function getTrailerFileUrlAttribute(): ?string
+    {
+        return $this->trailer_file ? $this->getFileUrl($this->trailer_file) : null;
+    }
+
+    public function getVideoFileUrlAttribute(): ?string
+    {
+        return $this->video_file ? $this->getFileUrl($this->video_file) : null;
     }
 }
