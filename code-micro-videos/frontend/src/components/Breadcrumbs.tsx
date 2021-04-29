@@ -7,24 +7,23 @@ import {Route} from 'react-router';
 import {Link as RouterLink} from 'react-router-dom';
 import {Location} from 'history';
 import routes from "../routes";
+import RouteParser from 'route-parser';
+import {Container} from "@material-ui/core";
 
 const breadcrumbNameMap: { [key: string]: string } = {};
 routes.forEach(route => breadcrumbNameMap[route.path as string] = route.label);
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        root: {
-            display: 'flex',
-            flexDirection: 'column',
-            width: 360,
-        },
-        lists: {
-            backgroundColor: theme.palette.background.paper,
-            marginTop: theme.spacing(1),
-        },
-        nested: {
-            paddingLeft: theme.spacing(4),
-        },
+        linkRouter: {
+            color: "#4db5ab",
+            "&:focus, &:active": {
+                color: "#4db5ab"
+            },
+            "&:hover": {
+                color: "#055a52"
+            }
+        }
     }),
 );
 
@@ -47,14 +46,19 @@ export default function Breadcrumbs() {
                     pathnames.map((value, index) => {
                         const last = index === pathnames.length - 1;
                         const to = pathnames.slice(0, index + 1).join('/').replace('//', '/');
+                        const route = Object.keys(breadcrumbNameMap).find(path => new RouteParser(path).match(to));
+
+                        if (route === undefined) {
+                            return false;
+                        }
 
                         return last ? (
                             <Typography color="textPrimary" key={to}>
-                                {breadcrumbNameMap[to]}
+                                {breadcrumbNameMap[route]}
                             </Typography>
                         ) : (
-                            <LinkRouter color="inherit" to={to} key={to}>
-                                {breadcrumbNameMap[to]}
+                            <LinkRouter color="inherit" to={to} key={to} className={classes.linkRouter}>
+                                {breadcrumbNameMap[route]}
                             </LinkRouter>
                         );
                     })
@@ -64,12 +68,12 @@ export default function Breadcrumbs() {
     }
 
     return (
-        <div className={classes.root}>
+        <Container>
             <Route>
                 {
                     ({ location }) => makeBreadcrumb(location)
                 }
             </Route>
-        </div>
+        </Container>
     );
 }
