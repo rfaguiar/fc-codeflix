@@ -1,10 +1,9 @@
 import * as React from 'react';
-import {useEffect, useState} from 'react';
 import MUIDataTable, {MUIDataTableColumn} from "mui-datatables";
-import {Chip} from "@material-ui/core";
+import {useEffect, useState} from "react";
+import {httpVideo} from "../../util/http";
 import format from "date-fns/format";
 import parseISO from "date-fns/parseISO";
-import categoryHttp from "../../util/http/category-http";
 
 const columnsDefinition: MUIDataTableColumn[] = [
     {
@@ -12,11 +11,11 @@ const columnsDefinition: MUIDataTableColumn[] = [
         label: "Nome"
     },
     {
-        name: "is_active",
-        label: "Ativo?",
+        name: "categories",
+        label: "Categorias",
         options: {
             customBodyRender(value, tableMeta, updateValue) {
-                return value ? <Chip label={'Sim'} color={'primary'}/> : <Chip label={'Não'}  color={'secondary'}/>;
+                return value.map(value => value.name).join(', ');
             }
         }
     },
@@ -31,21 +30,14 @@ const columnsDefinition: MUIDataTableColumn[] = [
     }
 ];
 
-interface Category {
-    id: string,
-    name: string;
-    is_active: boolean;
-    created_at: string;
-}
-
 type Props = {
 
 };
 const Table = (props: Props) => {
-    const [data, setData] = useState<Category[]>([]);
+    const [data, setData] = useState([]);
     useEffect(() => {
-        categoryHttp.list<{ data: Category[] }>()
-            .then(({data}) => setData(data.data));
+        httpVideo.get('genres')
+            .then(response => setData(response.data.data));
     }, []);
 
     return (
@@ -53,7 +45,7 @@ const Table = (props: Props) => {
             <MUIDataTable
                 columns={columnsDefinition}
                 data={data}
-                title={"Listagem de categorias"}
+                title={"Listagem de gêneros"}
             />
         </div>
     );
