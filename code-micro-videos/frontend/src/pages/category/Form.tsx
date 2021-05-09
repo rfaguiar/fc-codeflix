@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {Box, Button, ButtonProps, Checkbox, makeStyles, TextField} from "@material-ui/core";
 import {Theme} from "@material-ui/core/styles";
+import useForm from "react-hook-form";
 
 const useStyles = makeStyles((theme: Theme) => {
     return {
@@ -19,6 +20,8 @@ export const Form = () => {
         className: classes.submit
     };
 
+    const {register, getValues} = useForm();
+
     return (
         <form>
             <TextField
@@ -26,6 +29,7 @@ export const Form = () => {
                 label={'Nome'}
                 fullWidth
                 variant={'outlined'}
+                inputRef={register}
             />
             <TextField
                 name={'description'}
@@ -35,13 +39,15 @@ export const Form = () => {
                 fullWidth
                 variant={'outlined'}
                 margin={'normal'}
+                inputRef={register}
             />
             <Checkbox
                 name={'is_active'}
+                inputRef={register}
             />
             Ativo?
             <Box dir={'rtl'}>
-                <Button {...buttonProps} >Salvar</Button>
+                <Button {...buttonProps} onClick={() => console.log(getValues())} >Salvar</Button>
                 <Button {...buttonProps} type={'submit'} >Salvar e continuar editando</Button>
             </Box>
         </form>
