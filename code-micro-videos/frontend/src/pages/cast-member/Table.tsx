@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import {httpVideo} from "../../util/http";
 import format from "date-fns/format";
 import parseISO from "date-fns/parseISO";
+import castMemberHttp from "../../util/http/cast-member-http";
 
 const CastMemberTypeMap = {
     1: 'Diretor',
@@ -35,12 +36,19 @@ const columnsDefinition: MUIDataTableColumn[] = [
     }
 ];
 
-type Props = {
 
-};
-const Table = (props: Props) => {
-    const [data, setData] = useState([]);
+interface CastMember {
+    id: string,
+    name: string;
+    type: string;
+    created_at: string;
+}
+
+const Table = () => {
+    const [data, setData] = useState<CastMember[]>([]);
     useEffect(() => {
+        castMemberHttp.list<{ data: CastMember[] }>()
+            .then(({data}) => setData(data.data));
         httpVideo.get('cast_members')
             .then(response => setData(response.data.data));
     }, []);
