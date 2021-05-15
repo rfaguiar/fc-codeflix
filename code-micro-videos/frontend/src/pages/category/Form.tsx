@@ -55,6 +55,7 @@ export const Form = () => {
                 name={'is_active'}
                 defaultChecked
                 inputRef={register}
+                color={'primary'}
             />
             Ativo?
             <Box dir={'rtl'}>
