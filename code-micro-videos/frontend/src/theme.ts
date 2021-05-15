@@ -15,10 +15,8 @@ const theme = createMuiTheme({
         }
     },
     overrides: {
-        MuiInputBase: {
-            input: {
+        MuiDataTable: {
 
-            }
         }
     }
 });
