@@ -1,6 +1,8 @@
 import {createMuiTheme, SimplePaletteColorOptions} from "@material-ui/core";
 import {PaletteOptions} from "@material-ui/core/styles/createPalette";
+import {green, red} from "@material-ui/core/colors";
 
+// @ts-ignore
 const palette: PaletteOptions = {
     primary: {
         main: '#79aec8',
@@ -12,6 +14,12 @@ const palette: PaletteOptions = {
     },
     background: {
         default: '#fafafa'
+    },
+    error: {
+        main: red["500"]
+    },
+    success: {
+        main: green["500"]
     }
 };
 
