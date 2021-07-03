@@ -3,7 +3,7 @@ import {Box, Button, ButtonProps, Checkbox, makeStyles, TextField} from "@materi
 import {Theme} from "@material-ui/core/styles";
 import useForm from "react-hook-form";
 import categoryHttp from "../../util/http/category-http";
-import * as yup from "yup";
+import * as yup from "../../util/vendor/yup";
 
 const useStyles = makeStyles((theme: Theme) => {
     return {
@@ -14,7 +14,10 @@ const useStyles = makeStyles((theme: Theme) => {
 });
 
 const validationSchema = yup.object().shape({
-    name: yup.string().label('Nome').required(),
+    name: yup.string()
+        .label('Nome')
+        .required()
+        .max(255),
 });
 
 export const Form = () => {
@@ -28,6 +31,7 @@ export const Form = () => {
     };
 
     const {register, getValues, handleSubmit, errors} = useForm({
+        validationSchema,
         defaultValues: {
             is_active: true
         }
@@ -45,13 +49,7 @@ export const Form = () => {
                 label={'Nome'}
                 fullWidth
                 variant={'outlined'}
-                inputRef={register({
-                    required: 'O campo nome é requerido',
-                    maxLength: {
-                        value: 2,
-                        message: 'O máximo caracteres é 2'
-                    }}
-                )}
+                inputRef={register}
                 error={errors.name !== undefined}
                 helperText={errors.name && errors.name.message}
             />
