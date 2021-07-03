@@ -4,6 +4,8 @@ import {Theme} from "@material-ui/core/styles";
 import useForm from "react-hook-form";
 import categoryHttp from "../../util/http/category-http";
 import * as yup from "../../util/vendor/yup";
+import {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
 
 const useStyles = makeStyles((theme: Theme) => {
     return {
@@ -30,16 +32,35 @@ export const Form = () => {
         className: classes.submit
     };
 
-    const {register, getValues, handleSubmit, errors} = useForm({
+    const {register, getValues, handleSubmit, errors, reset} = useForm({
         validationSchema,
         defaultValues: {
             is_active: true
         }
     });
 
+    // @ts-ignore
+    const {id} = useParams();
+    const [category, setCategory] = useState<{id: string} | null>(null);
+
+    useEffect(() => {
+        if (!id) {
+            return;
+        }
+
+        categoryHttp.get(id)
+            .then(({data}) => {
+                setCategory(data.data);
+                reset(data.data);
+            });
+    }, []);
+
     function onSubmit(formData, event) {
-        categoryHttp.create(formData)
-            .then(response => console.log(response));
+        const http = !category
+            ? categoryHttp.create(formData)
+            : categoryHttp.update(category.id, formData);
+
+        http.then(response => console.log(response));
     }
 
     return (
@@ -52,6 +73,7 @@ export const Form = () => {
                 inputRef={register}
                 error={errors.name !== undefined}
                 helperText={errors.name && errors.name.message}
+                InputLabelProps={{shrink: true}}
             />
             <TextField
                 name={'description'}
@@ -62,6 +84,7 @@ export const Form = () => {
                 variant={'outlined'}
                 margin={'normal'}
                 inputRef={register}
+                InputLabelProps={{shrink: true}}
             />
             <Checkbox
                 name={'is_active'}
