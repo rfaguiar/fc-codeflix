@@ -58,7 +58,7 @@ const Table = () => {
             <MUIDataTable
                 columns={columnsDefinition}
                 data={data}
-                title={"Listagem de membros de elencos"}
+                title={""}
             />
         </div>
     );
