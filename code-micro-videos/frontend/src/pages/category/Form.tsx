@@ -24,9 +24,6 @@ const validationSchema = yup.object().shape({
 });
 
 export const Form = () => {
-
-    const classes = useStyles();
-
     const {register, getValues, setValue, handleSubmit, errors, reset, watch} = useForm({
         validationSchema,
         defaultValues: {
@@ -34,6 +31,7 @@ export const Form = () => {
         }
     });
 
+    const classes = useStyles();
     const snackbar = useSnackbar();
     const history = useHistory();
     // @ts-ignore
@@ -57,23 +55,33 @@ export const Form = () => {
             return;
         }
 
-        setLoading(true);
-
-        categoryHttp.get(id)
-            .then(({data}) => {
+        async function getCategory() {
+            setLoading(true);
+            try {
+                const {data} = await categoryHttp.get(id);
                 setCategory(data.data);
                 reset(data.data);
-            })
-            .finally(() => setLoading(false));
+            } catch (error) {
+                console.error(error);
+                snackbar.enqueueSnackbar('Não foi possível carregar as informações',
+                    {variant: 'error'}
+                )
+            } finally {
+                setLoading(false);
+            }
+        }
+        getCategory();
     }, [id, reset]);
 
-    function onSubmit(formData, event) {
+    async function onSubmit(formData, event) {
         setLoading(true);
-        const http = !category
-            ? categoryHttp.create(formData)
-            : categoryHttp.update(category.id, formData);
+        try {
+            const http = !category
+                ? categoryHttp.create(formData)
+                : categoryHttp.update(category.id, formData);
 
-        http.then(({data}) => {
+            const {data} = await http;
+
             snackbar.enqueueSnackbar(
                 'Categoria salva com sucesso',
                 {variant: 'success'}
@@ -86,15 +94,15 @@ export const Form = () => {
                     history.push('/categories')
                 }
             });
-        })
-            .catch(error => {
-                console.error(error);
-                snackbar.enqueueSnackbar(
-                    'Não foi possível salvar a categoria',
-                    {variant: 'error'}
-                )
-            })
-            .finally(() => setLoading(false));
+        } catch (error) {
+            console.error(error);
+            snackbar.enqueueSnackbar(
+                'Não foi possível salvar a categoria',
+                {variant: 'error'}
+            )
+        } finally {
+            setLoading(false)
+        }
     }
 
     return (
