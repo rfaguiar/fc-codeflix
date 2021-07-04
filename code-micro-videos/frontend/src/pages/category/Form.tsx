@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Box, Button, ButtonProps, Checkbox, makeStyles, TextField} from "@material-ui/core";
+import {Box, Button, ButtonProps, Checkbox, FormControlLabel, makeStyles, TextField} from "@material-ui/core";
 import {Theme} from "@material-ui/core/styles";
 import useForm from "react-hook-form";
 import categoryHttp from "../../util/http/category-http";
@@ -32,7 +32,7 @@ export const Form = () => {
         className: classes.submit
     };
 
-    const {register, getValues, handleSubmit, errors, reset} = useForm({
+    const {register, getValues, setValue, handleSubmit, errors, reset, watch} = useForm({
         validationSchema,
         defaultValues: {
             is_active: true
@@ -44,6 +44,10 @@ export const Form = () => {
     const [category, setCategory] = useState<{id: string} | null>(null);
 
     useEffect(() => {
+        register({name: "is_active"});
+    }, [register])
+
+    useEffect(() => {
         if (!id) {
             return;
         }
@@ -53,7 +57,7 @@ export const Form = () => {
                 setCategory(data.data);
                 reset(data.data);
             });
-    }, []);
+    }, [id, reset]);
 
     function onSubmit(formData, event) {
         const http = !category
@@ -86,13 +90,20 @@ export const Form = () => {
                 inputRef={register}
                 InputLabelProps={{shrink: true}}
             />
-            <Checkbox
-                name={'is_active'}
-                defaultChecked
-                inputRef={register}
-                color={'primary'}
+            <FormControlLabel
+                control={
+                    <Checkbox
+                        name="is_active"
+                        color={'primary'}
+                        onChange={
+                            () => setValue('is_active', !getValues()['is_active'])
+                        }
+                        checked={Boolean(watch('is_active'))}
+                    />
+                }
+                label={'Ativo?'}
+                labelPlacement={'end'}
             />
-            Ativo?
             <Box dir={'rtl'}>
                 <Button
                     color={'primary'}
