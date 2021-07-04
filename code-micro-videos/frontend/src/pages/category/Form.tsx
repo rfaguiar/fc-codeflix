@@ -5,7 +5,7 @@ import useForm from "react-hook-form";
 import categoryHttp from "../../util/http/category-http";
 import * as yup from "../../util/vendor/yup";
 import {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
+import {useParams, useHistory} from "react-router";
 
 const useStyles = makeStyles((theme: Theme) => {
     return {
@@ -33,6 +33,7 @@ export const Form = () => {
         }
     });
 
+    const history = useHistory();
     // @ts-ignore
     const {id} = useParams();
     const [category, setCategory] = useState<{id: string} | null>(null);
@@ -70,8 +71,17 @@ export const Form = () => {
             ? categoryHttp.create(formData)
             : categoryHttp.update(category.id, formData);
 
-        http.then(response => console.log(response))
-            .finally(() => setLoading(false));
+        http.then(({data}) => {
+            setTimeout(() => {
+                if (event) {
+                    id ? history.replace(`/categories/${data.data.id}/edit`)
+                        : history.push(`/categories/${data.data.id}/edit`)
+                } else {
+                    history.push('/categories')
+                }
+            });
+        })
+        .finally(() => setLoading(false));
     }
 
     return (
