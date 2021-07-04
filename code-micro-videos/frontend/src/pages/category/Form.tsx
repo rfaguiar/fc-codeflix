@@ -6,6 +6,7 @@ import categoryHttp from "../../util/http/category-http";
 import * as yup from "../../util/vendor/yup";
 import {useEffect, useState} from "react";
 import {useParams, useHistory} from "react-router";
+import {useSnackbar} from "notistack";
 
 const useStyles = makeStyles((theme: Theme) => {
     return {
@@ -33,6 +34,7 @@ export const Form = () => {
         }
     });
 
+    const snackbar = useSnackbar();
     const history = useHistory();
     // @ts-ignore
     const {id} = useParams();
@@ -72,6 +74,10 @@ export const Form = () => {
             : categoryHttp.update(category.id, formData);
 
         http.then(({data}) => {
+            snackbar.enqueueSnackbar(
+                'Categoria salva com sucesso',
+                {variant: 'success'}
+            )
             setTimeout(() => {
                 if (event) {
                     id ? history.replace(`/categories/${data.data.id}/edit`)
@@ -81,7 +87,14 @@ export const Form = () => {
                 }
             });
         })
-        .finally(() => setLoading(false));
+            .catch(error => {
+                console.error(error);
+                snackbar.enqueueSnackbar(
+                    'Não foi possível salvar a categoria',
+                    {variant: 'error'}
+                )
+            })
+            .finally(() => setLoading(false));
     }
 
     return (
