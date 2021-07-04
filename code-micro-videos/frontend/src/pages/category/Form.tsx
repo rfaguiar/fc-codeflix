@@ -26,12 +26,6 @@ export const Form = () => {
 
     const classes = useStyles();
 
-    const buttonProps: ButtonProps = {
-        color: 'secondary',
-        variant: "contained",
-        className: classes.submit
-    };
-
     const {register, getValues, setValue, handleSubmit, errors, reset, watch} = useForm({
         validationSchema,
         defaultValues: {
@@ -42,6 +36,14 @@ export const Form = () => {
     // @ts-ignore
     const {id} = useParams();
     const [category, setCategory] = useState<{id: string} | null>(null);
+    const [loading, setLoading] = useState<boolean>(false);
+
+    const buttonProps: ButtonProps = {
+        color: 'secondary',
+        variant: "contained",
+        className: classes.submit,
+        disabled: loading
+    };
 
     useEffect(() => {
         register({name: "is_active"});
@@ -52,19 +54,24 @@ export const Form = () => {
             return;
         }
 
+        setLoading(true);
+
         categoryHttp.get(id)
             .then(({data}) => {
                 setCategory(data.data);
                 reset(data.data);
-            });
+            })
+            .finally(() => setLoading(false));
     }, [id, reset]);
 
     function onSubmit(formData, event) {
+        setLoading(true);
         const http = !category
             ? categoryHttp.create(formData)
             : categoryHttp.update(category.id, formData);
 
-        http.then(response => console.log(response));
+        http.then(response => console.log(response))
+            .finally(() => setLoading(false));
     }
 
     return (
@@ -75,6 +82,7 @@ export const Form = () => {
                 fullWidth
                 variant={'outlined'}
                 inputRef={register}
+                disabled={loading}
                 error={errors.name !== undefined}
                 helperText={errors.name && errors.name.message}
                 InputLabelProps={{shrink: true}}
@@ -88,9 +96,11 @@ export const Form = () => {
                 variant={'outlined'}
                 margin={'normal'}
                 inputRef={register}
+                disabled={loading}
                 InputLabelProps={{shrink: true}}
             />
             <FormControlLabel
+                disabled={loading}
                 control={
                     <Checkbox
                         name="is_active"
