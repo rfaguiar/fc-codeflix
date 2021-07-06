@@ -38,14 +38,13 @@ interface Category {
     created_at: string;
 }
 
-type Props = {
-
-};
-const Table = (props: Props) => {
+const Table = () => {
     const [data, setData] = useState<Category[]>([]);
     useEffect(() => {
-        categoryHttp.list<{ data: Category[] }>()
-            .then(({data}) => setData(data.data));
+        (async function getCategories() {
+            const {data} = await categoryHttp.list<{ data: Category[] }>();
+            setData(data.data);
+        })();
     }, []);
 
     return (

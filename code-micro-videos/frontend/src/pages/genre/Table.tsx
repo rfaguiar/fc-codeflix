@@ -41,8 +41,10 @@ interface Genre {
 const Table = () => {
     const [data, setData] = useState<Genre[]>([]);
     useEffect(() => {
-        genreHttp.list<{ data: Genre[] }>()
-            .then(({data}) => setData(data.data));
+        (async function getGenre() {
+            const {data} = await genreHttp.list<{ data: Genre[] }>();
+            setData(data.data);
+        })();
     }, []);
 
     return (

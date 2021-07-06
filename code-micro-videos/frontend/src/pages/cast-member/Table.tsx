@@ -47,10 +47,10 @@ interface CastMember {
 const Table = () => {
     const [data, setData] = useState<CastMember[]>([]);
     useEffect(() => {
-        castMemberHttp.list<{ data: CastMember[] }>()
-            .then(({data}) => setData(data.data));
-        httpVideo.get('cast_members')
-            .then(response => setData(response.data.data));
+        (async function getData() {
+            const {data} = await castMemberHttp.list<{ data: CastMember[] }>();
+            setData(data.data);
+        })();
     }, []);
 
     return (
