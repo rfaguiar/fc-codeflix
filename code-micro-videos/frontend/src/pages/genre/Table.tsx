@@ -4,6 +4,7 @@ import MUIDataTable, {MUIDataTableColumn} from "mui-datatables";
 import format from "date-fns/format";
 import parseISO from "date-fns/parseISO";
 import genreHttp from "../../util/http/genre-http";
+import {Genre, ListResponse} from "../../util/models";
 
 const columnsDefinition: MUIDataTableColumn[] = [
     {
@@ -30,19 +31,11 @@ const columnsDefinition: MUIDataTableColumn[] = [
     }
 ];
 
-
-interface Genre {
-    id: string,
-    name: string;
-    categories: [];
-    created_at: string;
-}
-
 const Table = () => {
     const [data, setData] = useState<Genre[]>([]);
     useEffect(() => {
         (async function getGenre() {
-            const {data} = await genreHttp.list<{ data: Genre[] }>();
+            const {data} = await genreHttp.list<ListResponse<Genre>>();
             setData(data.data);
         })();
     }, []);

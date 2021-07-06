@@ -5,6 +5,7 @@ import format from "date-fns/format";
 import parseISO from "date-fns/parseISO";
 import categoryHttp from "../../util/http/category-http";
 import {BadgeNo, BadgeYes} from "../../components/Badge";
+import {Category, ListResponse} from "../../util/models";
 
 const columnsDefinition: MUIDataTableColumn[] = [
     {
@@ -31,18 +32,11 @@ const columnsDefinition: MUIDataTableColumn[] = [
     }
 ];
 
-interface Category {
-    id: string,
-    name: string;
-    is_active: boolean;
-    created_at: string;
-}
-
 const Table = () => {
     const [data, setData] = useState<Category[]>([]);
     useEffect(() => {
         (async function getCategories() {
-            const {data} = await categoryHttp.list<{ data: Category[] }>();
+            const {data} = await categoryHttp.list<ListResponse<Category>>();
             setData(data.data);
         })();
     }, []);

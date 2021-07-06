@@ -18,6 +18,8 @@ import castMemberHttp from "../../util/http/cast-member-http";
 import * as yup from "../../util/vendor/yup";
 import {useSnackbar} from "notistack";
 import {useHistory, useParams} from "react-router";
+import {CastMember} from "../../util/models";
+import {AxiosResponse} from "axios";
 
 const useStyles = makeStyles((theme: Theme) => {
     return {
@@ -48,7 +50,7 @@ export const Form = () => {
     const history = useHistory();
     // @ts-ignore
     const {id} = useParams();
-    const [castMember, setCastMember] = useState<{id: string} | null>(null);
+    const [castMember, setCastMember] = useState<CastMember | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
 
     const buttonProps: ButtonProps = {
@@ -69,7 +71,7 @@ export const Form = () => {
         (async function getCastMember() {
             setLoading(true);
             try {
-                const {data} = await castMemberHttp.get(id);
+                const {data} = await castMemberHttp.get<AxiosResponse<CastMember>>(id);
                 setCastMember(data.data);
                 reset(data.data);
             } catch (error) {

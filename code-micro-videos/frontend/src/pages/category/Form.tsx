@@ -7,6 +7,8 @@ import * as yup from "../../util/vendor/yup";
 import {useEffect, useState} from "react";
 import {useParams, useHistory} from "react-router";
 import {useSnackbar} from "notistack";
+import {Category} from "../../util/models";
+import {AxiosResponse} from "axios";
 
 const useStyles = makeStyles((theme: Theme) => {
     return {
@@ -36,7 +38,7 @@ export const Form = () => {
     const history = useHistory();
     // @ts-ignore
     const {id} = useParams();
-    const [category, setCategory] = useState<{id: string} | null>(null);
+    const [category, setCategory] = useState<Category | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
 
     const buttonProps: ButtonProps = {
@@ -58,7 +60,7 @@ export const Form = () => {
         (async function getCategory() {
             setLoading(true);
             try {
-                const {data} = await categoryHttp.get(id);
+                const {data} = await categoryHttp.get<AxiosResponse<Category>>(id);
                 setCategory(data.data);
                 reset(data.data);
             } catch (error) {

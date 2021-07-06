@@ -8,6 +8,7 @@ import categoryHttp from "../../util/http/category-http";
 import * as yup from "../../util/vendor/yup";
 import {useSnackbar} from "notistack";
 import {useHistory, useParams} from "react-router";
+import {Category, Genre, ListResponse} from "../../util/models";
 
 const useStyles = makeStyles((theme: Theme) => {
     return {
@@ -41,8 +42,8 @@ export const Form = () => {
     const history = useHistory();
     // @ts-ignore
     const {id} = useParams();
-    const [genre, setGenre] = useState<{id: string} | null>(null);
-    const [categories, setCategories] = useState<any[]>([]);
+    const [genre, setGenre] = useState<Genre | null>(null);
+    const [categories, setCategories] = useState<Category[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
 
     const buttonProps: ButtonProps = {
@@ -82,11 +83,6 @@ export const Form = () => {
     useEffect(() => {
         register({name: 'categories_id'});
     }, [register]);
-
-    useEffect(() => {
-        categoryHttp.list()
-            .then(({data}) => setCategories(data.data));
-    }, []);
 
     async function onSubmit(formData, event) {
         setLoading(true);
