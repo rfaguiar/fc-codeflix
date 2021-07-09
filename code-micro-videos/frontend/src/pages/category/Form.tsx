@@ -9,6 +9,7 @@ import {useSnackbar} from "notistack";
 import {Category} from "../../util/models";
 import {AxiosResponse} from "axios";
 import SubmitActions from "../../components/SubmitActions";
+import DefaultForm from "../../components/DefaultForm";
 
 
 const validationSchema = yup.object().shape({
@@ -93,7 +94,7 @@ export const Form = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <DefaultForm onSubmit={handleSubmit(onSubmit)}>
             <TextField
                 name={'name'}
                 label={'Nome'}
@@ -139,6 +140,6 @@ export const Form = () => {
                     })
                 }
             />
-        </form>
+        </DefaultForm>
     );
 };
