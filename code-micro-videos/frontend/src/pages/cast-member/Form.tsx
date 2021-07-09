@@ -1,18 +1,14 @@
 import * as React from 'react';
 import {useEffect, useState} from 'react';
 import {
-    Box,
-    Button,
-    ButtonProps,
     FormControl,
-    FormControlLabel, FormHelperText,
+    FormControlLabel,
+    FormHelperText,
     FormLabel,
-    makeStyles,
     Radio,
     RadioGroup,
     TextField
 } from "@material-ui/core";
-import {Theme} from "@material-ui/core/styles";
 import useForm from "react-hook-form";
 import castMemberHttp from "../../util/http/cast-member-http";
 import * as yup from "../../util/vendor/yup";
@@ -20,14 +16,7 @@ import {useSnackbar} from "notistack";
 import {useHistory, useParams} from "react-router";
 import {CastMember} from "../../util/models";
 import {AxiosResponse} from "axios";
-
-const useStyles = makeStyles((theme: Theme) => {
-    return {
-        submit: {
-            margin: theme.spacing(1)
-        }
-    }
-});
+import SubmitActions from "../../components/SubmitActions";
 
 const validationSchema = yup.object().shape({
     name: yup.string()
@@ -41,23 +30,16 @@ const validationSchema = yup.object().shape({
 
 export const Form = () => {
 
-    const {register, getValues, setValue, handleSubmit, errors, reset, watch} = useForm({
+    const {register, getValues, setValue, handleSubmit, errors, reset, watch, triggerValidation} = useForm({
         validationSchema,
     });
 
-    const classes = useStyles();
     const snackbar = useSnackbar();
     const history = useHistory();
     // @ts-ignore
     const {id} = useParams();
     const [castMember, setCastMember] = useState<CastMember | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
-
-    const buttonProps: ButtonProps = {
-        color: 'secondary',
-        variant: "contained",
-        className: classes.submit
-    };
 
     useEffect(() => {
         register({name: "type"});
@@ -149,10 +131,13 @@ export const Form = () => {
                     errors.type && <FormHelperText id={"type-helper-text"}>{errors.type.message}</FormHelperText>
                 }
             </FormControl>
-            <Box dir={'rtl'}>
-                <Button {...buttonProps} onClick={() => onSubmit(getValues(), null)} >Salvar</Button>
-                <Button {...buttonProps} type={'submit'} >Salvar e continuar editando</Button>
-            </Box>
+            <SubmitActions
+                disableButtons={loading}
+                handleSave={() => triggerValidation().then(isValid => {
+                    isValid && onSubmit(getValues(), null)
+                })
+                }
+            />
         </form>
     );
 };

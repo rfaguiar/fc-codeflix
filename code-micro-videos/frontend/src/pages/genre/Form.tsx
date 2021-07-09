@@ -1,22 +1,14 @@
 import * as React from 'react';
 import {useEffect, useState} from 'react';
-import {Box, Button, ButtonProps, makeStyles, MenuItem, TextField} from "@material-ui/core";
-import {Theme} from "@material-ui/core/styles";
+import {MenuItem, TextField} from "@material-ui/core";
 import useForm from "react-hook-form";
 import genreHttp from "../../util/http/genre-http";
 import categoryHttp from "../../util/http/category-http";
 import * as yup from "../../util/vendor/yup";
 import {useSnackbar} from "notistack";
 import {useHistory, useParams} from "react-router";
-import {Category, Genre, ListResponse} from "../../util/models";
-
-const useStyles = makeStyles((theme: Theme) => {
-    return {
-        submit: {
-            margin: theme.spacing(1)
-        }
-    }
-});
+import {Category, Genre} from "../../util/models";
+import SubmitActions from "../../components/SubmitActions";
 
 const validationSchema = yup.object().shape({
     name: yup.string()
@@ -30,14 +22,13 @@ const validationSchema = yup.object().shape({
 
 export const Form = () => {
 
-    const {register, getValues, setValue, handleSubmit, errors, reset, watch} = useForm({
+    const {register, getValues, setValue, handleSubmit, errors, reset, watch, triggerValidation} = useForm({
         validationSchema,
         defaultValues: {
             categories_id: []
         }
     });
 
-    const classes = useStyles();
     const snackbar = useSnackbar();
     const history = useHistory();
     // @ts-ignore
@@ -45,12 +36,6 @@ export const Form = () => {
     const [genre, setGenre] = useState<Genre | null>(null);
     const [categories, setCategories] = useState<Category[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
-
-    const buttonProps: ButtonProps = {
-        color: 'secondary',
-        variant: "contained",
-        className: classes.submit
-    };
 
     useEffect(() => {
         (async function loadData() {
@@ -158,10 +143,13 @@ export const Form = () => {
                     )
                 }
             </TextField>
-            <Box dir={'rtl'}>
-                <Button {...buttonProps} onClick={() => onSubmit(getValues(), null)} >Salvar</Button>
-                <Button {...buttonProps} type={'submit'} >Salvar e continuar editando</Button>
-            </Box>
+            <SubmitActions
+                disableButtons={loading}
+                handleSave={() => triggerValidation().then(isValid => {
+                    isValid && onSubmit(getValues(), null)
+                })
+                }
+            />
         </form>
     );
 };
