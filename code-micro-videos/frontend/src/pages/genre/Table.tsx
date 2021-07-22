@@ -1,16 +1,24 @@
 import * as React from 'react';
 import {useEffect, useState} from 'react';
-import {MUIDataTableColumn} from "mui-datatables";
 import format from "date-fns/format";
 import parseISO from "date-fns/parseISO";
 import genreHttp from "../../util/http/genre-http";
 import {Genre, ListResponse} from "../../util/models";
-import DefaultTable from '../../components/Table';
+import DefaultTable, {TableColumn} from '../../components/Table';
 
-const columnsDefinition: MUIDataTableColumn[] = [
+const columnsDefinition: TableColumn[] = [
+    {
+        name: 'id',
+        label: 'ID',
+        width: '33%',
+        options: {
+            sort: false
+        }
+    },
     {
         name: "name",
-        label: "Nome"
+        label: "Nome",
+        width: '50%'
     },
     {
         name: "categories",
