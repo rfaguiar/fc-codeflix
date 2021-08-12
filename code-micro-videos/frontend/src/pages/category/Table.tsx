@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import format from "date-fns/format";
 import parseISO from "date-fns/parseISO";
 import categoryHttp from "../../util/http/category-http";
@@ -10,7 +10,11 @@ import {useSnackbar} from "notistack";
 import {MuiThemeProvider} from "@material-ui/core/styles";
 import {IconButton} from "@material-ui/core";
 import {Link} from "react-router-dom";
-import EditIcon from "@material-ui/icons/Edit"
+import EditIcon from "@material-ui/icons/Edit";
+
+interface SearchState {
+    search: string;
+}
 
 const columnsDefinition: TableColumn[] = [
     {
@@ -70,31 +74,39 @@ const columnsDefinition: TableColumn[] = [
 
 const Table = () => {
     const snackbar = useSnackbar();
+    const subscribed = useRef(true);
     const [data, setData] = useState<Category[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
-    useEffect(() => {
-        let isSubscribed = true;
-        (async function getCategories() {
-            setLoading(true);
-            try {
-                const {data} = await categoryHttp.list<ListResponse<Category>>();
-                if (isSubscribed) {
-                    setData(data.data);
-                }
-            } catch (error) {
-                console.error(error);
-                snackbar.enqueueSnackbar('Não foi possível carregar as informações',
-                    {variant: 'error'}
-                )
-            } finally {
-                setLoading(false);
-            }
-        })();
+    const [searchState, setSearchState] = useState<SearchState>({search: ''});
 
+    useEffect(() => {
+        subscribed.current = true;
+        getData();
         return () => {
-            isSubscribed = false;
+            subscribed.current = false;
         }
-    }, []);
+    }, [searchState]);
+
+    async function getData() {
+        setLoading(true);
+        try {
+            const {data} = await categoryHttp.list<ListResponse<Category>>({
+                queryParams: {
+                    search: searchState.search
+                }
+            });
+            if (subscribed.current) {
+                setData(data.data);
+            }
+        } catch (error) {
+            console.error(error);
+            snackbar.enqueueSnackbar('Não foi possível carregar as informações',
+                {variant: 'error'}
+            )
+        } finally {
+            setLoading(false);
+        }
+    }
 
     return (
         <MuiThemeProvider theme={makeActionStyles(columnsDefinition.length - 1)}>
@@ -103,6 +115,10 @@ const Table = () => {
                 data={data}
                 title={""}
                 loading={loading}
+                options={{
+                    searchText: searchState.search,
+                    onSearchChange: value => setSearchState({search: value})
+                }}
             />
         </MuiThemeProvider>
     );
