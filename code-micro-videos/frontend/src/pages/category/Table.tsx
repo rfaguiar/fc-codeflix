@@ -18,9 +18,15 @@ interface Pagination {
     per_page: number;
 }
 
+interface Order {
+    sort: string | null;
+    dir: string | null;
+}
+
 interface SearchState {
     search: string;
     pagination: Pagination;
+    order: Order;
 }
 
 const columnsDefinition: TableColumn[] = [
@@ -90,7 +96,24 @@ const Table = () => {
             page: 1,
             total: 0,
             per_page: 10
+        },
+        order: {
+            sort: null,
+            dir: null
         }
+    });
+
+    const columns = columnsDefinition.map(column => {
+        if (column.name === searchState.order.sort) {
+            return {
+                ...column,
+                options: {
+                    ...column.options,
+                    sortDirection: searchState.order.dir as any
+                }
+            };
+        }
+        return column;
     });
 
     useEffect(() => {
@@ -102,7 +125,8 @@ const Table = () => {
     }, [
         searchState.search,
         searchState.pagination.page,
-        searchState.pagination.per_page
+        searchState.pagination.per_page,
+        searchState.order
     ]);
 
     async function getData() {
@@ -112,7 +136,9 @@ const Table = () => {
                 queryParams: {
                     search: searchState.search,
                     page: searchState.pagination.page,
-                    per_page: searchState.pagination.per_page
+                    per_page: searchState.pagination.per_page,
+                    sort: searchState.order.sort,
+                    dir: searchState.order.dir
                 }
             });
             if (subscribed.current) {
@@ -138,7 +164,7 @@ const Table = () => {
     return (
         <MuiThemeProvider theme={makeActionStyles(columnsDefinition.length - 1)}>
             <DefaultTable
-                columns={columnsDefinition}
+                columns={columns}
                 data={data}
                 title={""}
                 loading={loading}
@@ -164,6 +190,13 @@ const Table = () => {
                         pagination: {
                             ...prevState.pagination,
                             per_page: perPage
+                        }
+                    }))),
+                    onColumnSortChange: (changedColumn: string, direction: string) => setSearchState((prevState => ({
+                        ...prevState,
+                        order: {
+                            sort: changedColumn,
+                            dir: direction.includes('desc') ? 'desc' : 'asc'
                         }
                     })))
                 }}

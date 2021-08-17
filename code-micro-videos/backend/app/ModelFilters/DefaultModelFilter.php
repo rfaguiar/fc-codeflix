@@ -3,6 +3,7 @@
 namespace App\ModelFilters;
 
 use EloquentFilter\ModelFilter;
+use Illuminate\Support\Str;
 
 abstract class DefaultModelFilter extends ModelFilter
 {
