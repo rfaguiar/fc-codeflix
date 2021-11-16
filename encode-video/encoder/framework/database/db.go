@@ -25,7 +25,7 @@ func (d *Database) Connect() (*gorm.DB, error) {
 	if d.Env != "test" {
 		d.Db, err = gorm.Open(d.DbType, d.Dsn)
 	} else {
-		d.Db, err = gorm.Open(d.DsnTest, d.DsnTest)
+		d.Db, err = gorm.Open(d.DbTypeTest, d.DsnTest)
 	}
 
 	if err != nil {
@@ -44,12 +44,12 @@ func (d *Database) Connect() (*gorm.DB, error) {
 	return d.Db, nil
 }
 
-func NewBd() *Database {
+func NewDb() *Database {
 	return &Database{}
 }
 
 func NewDbTest() *gorm.DB {
-	dbInstance := NewBd()
+	dbInstance := NewDb()
 	dbInstance.Env = "test"
 	dbInstance.DbTypeTest = "sqlite3"
 	dbInstance.DsnTest = ":memory:"
