@@ -7,13 +7,14 @@ import (
 )
 
 type Job struct {
-	ID               string `valid:"uuid"`
-	OutputBucketPath string `valid:"notnull"`
-	Status           string `valid:"notnull"`
-	Video            *Video `valid:"-"`
-	Error            string `valid:"-"`
-	CreatAt          time.Time `valid:"-"`
-	UpdatedAt        time.Time `valid:"-"`
+	ID               string    `json:"job_id" valid:"uuid" gorm:"type:uuid;primary_key"`
+	OutputBucketPath string    `json:"output_bucket_path" valid:"notnull"`
+	Status           string    `json:"status" valid:"notnull"`
+	Video            *Video    `json:"video" valid:"-"`
+	VideoID          string    `json:"-" valid:"-" gorm:"type:uuid;column:video_id;notnull"`
+	Error            string    `valid:"-"`
+	CreatAt          time.Time `json:"creat_at" valid:"-"`
+	UpdatedAt        time.Time `json:"updated_at" valid:"-"`
 }
 
 func init() {
@@ -23,21 +24,21 @@ func init() {
 func NewJob(output string, status string, video *Video) (*Job, error) {
 	job := Job{
 		OutputBucketPath: output,
-		Status: status,
-		Video: video,
+		Status:           status,
+		Video:            video,
 	}
 	job.prepare()
 	err := job.Validate()
 	if err != nil {
 		return nil, err
 	}
-	return  &job, nil
+	return &job, nil
 }
 
 func (j *Job) prepare() {
-		j.ID = uuid.NewV4().String()
-		j.CreatAt = time.Now()
-		j.UpdatedAt = time.Now()
+	j.ID = uuid.NewV4().String()
+	j.CreatAt = time.Now()
+	j.UpdatedAt = time.Now()
 }
 
 func (j *Job) Validate() error {
